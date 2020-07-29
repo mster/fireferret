@@ -4,43 +4,61 @@ Document query and caching client for Node.js
 
 ## API
 
-`new fireFerret(options)` : `function`
+`new fireFerret(options)` : `<Function>`
+
+Creates a new FireFerret client.
 
 - `options` : `<object>`
 
-- `returns` : `<FireFerret-Client>`
+  Client options. See [options](#options)
 
-`fireFerret.connect()` : `async function`
+- Returns : `<FireFerret-Client>`
 
-- `returns` : `<Promise>`
+`fireFerret.connect()` : `<Async-Function>`
 
-  - `resolve` : `'ok'`
+- Returns : `<Promise>`
 
-  - `reject` : `Error`
+  - resolve : `'ok'`
 
-`fireFerret.close()` : `async function`
+    Connection to both data stores was successful.
 
-- `returns` : `<Promise>`
+  - reject : `Error`
 
-  - `resolve` : `'ok'`
+`fireFerret.close()` : `<Async-Function>`
 
-  - `reject` : `Error`
+Closes the client.
 
-`fireFerret.fetch(query)` : `async function`
+- Returns : `<Promise>`
 
-- `returns` : `<Promise>`
+  - resolve : `'ok'`
 
-  - `resolve` : `docs` `<Array>`
+    Connections have been closed successfully and client has exited.
 
-  - `reject` : `Error`
+  - reject : `Error`
 
-`fireFerret.fetchById(id)` : `async function`
+`fireFerret.fetch(query)` : `<Async-Function>`
 
-- `returns` : `<Promise>`
+- `query`: `<object>`
 
-  - `resolve` : `doc` `<object>`
+  A MongoDB style query.
 
-  - `reject` : `Error`
+- Returns : `<Promise>`
+
+  - resolve : `docs` `<Array>`
+
+  - reject : `Error`
+
+`fireFerret.fetchById(id)` : `<Async-Function>`
+
+- `id`: `<string>`
+
+  A MongoDB document ObjectId (as a string).
+
+- Returns : `<Promise>`
+
+  - resolve : `doc` `<object>`
+
+  - reject : `Error`
 
 ## Options
 
