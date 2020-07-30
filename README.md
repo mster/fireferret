@@ -4,7 +4,7 @@ Document query and caching client for Node.js
 
 ## API
 
-`new fireFerret(options)` : `<Function>`
+### new FireFerret ( options )
 
 Creates a new FireFerret client.
 
@@ -14,7 +14,7 @@ Creates a new FireFerret client.
 
 - Returns : `<FireFerret-Client>`
 
-`fireFerret.connect()` : `<Async-Function>`
+### FireFerret.connect( ) : `<Async-Function>`
 
 - Returns : `<Promise>`
 
@@ -24,7 +24,7 @@ Creates a new FireFerret client.
 
   - reject : `Error`
 
-`fireFerret.close()` : `<Async-Function>`
+### FireFerret.close( ) : `<Async-Function>`
 
 Closes the client.
 
@@ -36,7 +36,7 @@ Closes the client.
 
   - reject : `Error`
 
-`fireFerret.fetch(query)` : `<Async-Function>`
+### FireFerret.fetch( query ) : `<Async-Function>`
 
 - `query`: `<object>`
 
@@ -48,7 +48,7 @@ Closes the client.
 
   - reject : `Error`
 
-`fireFerret.fetchById(id)` : `<Async-Function>`
+### FireFerret.fetchById( id ) : `<Async-Function>`
 
 - `id`: `<string>`
 
