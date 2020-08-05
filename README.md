@@ -1,3 +1,7 @@
+### NOTE FROM AUTHOR:
+
+### FireFerret is currently experimental and unstable. Please refrain from using alpha versions in production. Stable releases will begin at v1.0.0.
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ 'JavaScript Standard Style')
 [![Build Status](https://travis-ci.com/mster/fireferret.svg?branch=master)](https://travis-ci.com/mster/fireferret)
@@ -40,7 +44,7 @@ Closes the client.
 
   - reject : `Error`
 
-### FireFerret.fetch( query ) : `<Async-Function>`
+### FireFerret.fetch( query [, options ] ) : `<Async-Function>`
 
 - `query`: `<object>`
 
