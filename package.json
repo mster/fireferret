@@ -1,9 +1,12 @@
 {
   "name": "fireferret",
-  "version": "0.0.1alpha-7",
+  "version": "0.0.1alpha-8",
   "description": "MongoDB + Redis for Node.js",
   "main": "index.js",
-  "files": ["index.js", "lib/*"],
+  "files": [
+    "index.js",
+    "lib/*"
+  ],
   "scripts": {
     "test": "npm run lint",
     "lint": "echo \"Running Lint...\" && standard --verbose && echo \"Lint Successful!\""
