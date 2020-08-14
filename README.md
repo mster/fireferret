@@ -1,6 +1,9 @@
-### NOTE FROM AUTHOR:
+## Hello there!
+### Thank you for checking out FireFerret!
 
-### FireFerret is currently experimental and unstable. Please refrain from using alpha versions in production. Stable releases will begin at v1.0.0.
+Currently (as of `v0.0.2`), FireFerret is unstable and deemed experiment. Please **AVOID** using this package in production until a stable version is released. 
+
+Stable releases will be designated by versions greater than `1.0.0` and are planned for September 2020.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ 'JavaScript Standard Style')
