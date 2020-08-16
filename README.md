@@ -5,6 +5,7 @@ Currently (as of `v0.0.2`), FireFerret is unstable and deemed experiment. Please
 
 Stable releases will be designated by versions greater than `1.0.0` and are planned for September 2020.
 
+[![npm version](https://badge.fury.io/js/fireferret.svg)](https://badge.fury.io/js/fireferret)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ 'JavaScript Standard Style')
 [![Build Status](https://travis-ci.com/mster/fireferret.svg?branch=master)](https://travis-ci.com/mster/fireferret)
