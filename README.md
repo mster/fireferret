@@ -33,7 +33,7 @@ Creates a new FireFerret client.
 
     Connection to both data stores was successful.
 
-  - reject : `Error`
+  - reject : `<FireFerret-Error>`
 
 ### FireFerret.close( ) : `<Async-Function>`
 
@@ -45,7 +45,7 @@ Closes the client.
 
     Connections have been closed successfully and client has exited.
 
-  - reject : `Error`
+  - reject : `<FireFerret-Error>`
 
 ### FireFerret.fetch( query [, options ] ) : `<Async-Function>`
 
@@ -53,29 +53,73 @@ Closes the client.
 
   A MongoDB style query.
 
+- `options`: `<object>`
+
+  Supported fetch options
+
 - Returns : `<Promise>`
 
   - resolve : `docs` `<Array>`
 
-  - reject : `Error`
+  - reject : `<FireFerret-Error>`
 
 ### FireFerret.fetchById( id ) : `<Async-Function>`
 
-- `id`: `<string>`
+- `id`: `<string>` | `<ObjectID>`
 
-  A MongoDB document ObjectId (as a string).
+  A MongoDB document id as a String or ObjectID.
 
 - Returns : `<Promise>`
 
-  - resolve : `doc` `<object>`
+  - resolve : `<object>` | `null`
 
-  - reject : `Error`
+  - reject : `<FireFerret-Error>`
+
+### FireFerret.fetchOne( query ) : `<Async-Function>`
+
+- `id`: `<string>`
+
+  A MongoDB style query.
+
+- Returns : `<Promise>`
+
+  - resolve : `<object>` | `null`
+
+  - reject : `<FireFerret-Error>`
 
 ## Options
 
 FireFerret's options in detail.
 
 Used for connection and configuration.
+
+```js
+options = {
+  wideMatch: false,
+  redisJSON: true,
+  globPagination: true,
+  REDIS_OPTS: { /* ... */ },
+  MONGO_OPTS: { /* ... */ }
+}
+```
+
+### Wide-match
+
+Attempt to use previously cached queries as a means of fulfilling a non-cached query. Wide-match can drastically improve performance of applications that frequently use `20;50;100` pagination.
+
+Enable wide-match by setting `wideMatch: true` in `options`.
+
+### Redis-JSON
+
+By default FireFerret uses hashes to cache individual documents. That being said, you can use (or make your own) redis json client to request and modify object properties specifically.
+
+If the redis-json option is disabled, documents will be cached as strings.
+
+Disable redis-json by setting `redisJSON: false` in `options`.
+
+### Glob-Pagination
+
+Coming soon ...
 
 ### Redis Options
 
