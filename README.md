@@ -77,7 +77,7 @@ Closes the client.
 
 ### FireFerret.fetchOne( query ) : `<Async-Function>`
 
-- `id`: `<string>`
+- `query`: `<object>`
 
   A MongoDB style query.
 
