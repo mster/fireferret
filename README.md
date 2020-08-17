@@ -1,19 +1,20 @@
 ## Hello there!
+
 ### Thank you for checking out FireFerret!
 
-Currently (as of `v0.0.2`), FireFerret is unstable and deemed experiment. Please **AVOID** using this package in production until a stable version is released. 
+Currently (as of `v0.0.2`), FireFerret is unstable and deemed experiment. Please **AVOID** using this package in production until a stable version is released.
 
 Stable releases will be designated by versions greater than `1.0.0` and are planned for September 2020.
 
 # FireFerret
 
-[![NPM](https://nodei.co/npm/fireferret.png)](https://nodei.co/npm/fireferret/)
+Document query and caching client for Node.js
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
-[![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ 'JavaScript Standard Style')
+[![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ "JavaScript Standard Style")
 [![Build Status](https://travis-ci.com/mster/fireferret.svg?branch=master)](https://travis-ci.com/mster/fireferret)
 
-Document query and caching client for Node.js
+[![NPM](https://nodei.co/npm/fireferret.png)](https://nodei.co/npm/fireferret/)
 
 ## API
 
@@ -100,9 +101,13 @@ options = {
   wideMatch: false,
   redisJSON: true,
   globPagination: true,
-  REDIS_OPTS: { /* ... */ },
-  MONGO_OPTS: { /* ... */ }
-}
+  REDIS_OPTS: {
+    /* ... */
+  },
+  MONGO_OPTS: {
+    /* ... */
+  },
+};
 ```
 
 ### Wide-match
@@ -129,11 +134,11 @@ FireFerret uses the [redis](https://www.npmjs.com/package/redis) package for eve
 
 ```js
 options.REDIS_OPTS = {
-  host: 'redis.foo.com',
+  host: "redis.foo.com",
   port: 6379,
-  auth_pass: 'bar'
+  auth_pass: "bar",
   /* more ... */
-}
+};
 ```
 
 ### MongoDB Options
@@ -142,9 +147,9 @@ FireFerret uses the [mongodb](https://www.npmjs.com/package/mongodb) package for
 
 ```js
 options.MONGO_OPTS = {
-  uri: 'mongodb+srv://foo.net',
-  db: 'bar',
-  collection: 'baz'
+  uri: "mongodb+srv://foo.net",
+  db: "bar",
+  collection: "baz",
   /* more ... */
-}
+};
 ```
