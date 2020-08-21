@@ -1,6 +1,6 @@
 {
   "name": "fireferret",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MongoDB + Redis for Node.js",
   "main": "index.js",
   "files": [
