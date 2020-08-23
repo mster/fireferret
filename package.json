@@ -1,6 +1,6 @@
 {
   "name": "fireferret",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "MongoDB + Redis for Node.js",
   "main": "index.js",
   "files": [
@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "npm run lint",
-    "lint": "echo \"Running Lint...\" && standard --verbose && echo \"Lint Successful!\""
+    "lint": "echo \"Running Lint...\" && standard --verbose && echo \"Lint Successful!\"",
+    "lint-fix": "echo \"Using \"standard --fix\"\" && standard --fix && echo \"All fixed up!\""
   },
   "repository": {
     "type": "git",
