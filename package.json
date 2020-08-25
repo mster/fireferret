@@ -1,14 +1,17 @@
 {
   "name": "fireferret",
-  "version": "0.2.5",
-  "description": "MongoDB + Redis for Node.js",
+  "version": "0.2.7",
+  "description": "Asynchronous MongoDB document query and caching client for Node.js",
   "main": "index.js",
   "files": [
     "index.js",
     "lib/*"
   ],
+  "engines": {
+    "node": ">= 10.0.0"
+  },
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint && jest",
     "lint": "echo \"Running Lint...\" && standard --verbose && echo \"Lint Successful!\"",
     "lint-fix": "echo \"Using \"standard --fix\"\" && standard --fix && echo \"All fixed up!\""
   },
@@ -22,12 +25,17 @@
     "url": "https://github.com/mster/fireferret/issues"
   },
   "homepage": "https://github.com/mster/fireferret#readme",
+  "jest": {
+    "testRegex": "./tests/.*.js$"
+  },
   "dependencies": {
+    "matflap": "0.0.0",
     "mongodb": "^3.5.9",
     "redis": "^3.0.2",
     "sliced": "^1.0.1"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "standard": "^14.3.4"
   }
 }
