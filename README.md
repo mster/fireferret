@@ -13,6 +13,7 @@ Document query and caching client for Node.js
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ "JavaScript Standard Style")
 [![Build Status](https://travis-ci.com/mster/fireferret.svg?branch=master)](https://travis-ci.com/mster/fireferret)
+[![Coverage Status](https://coveralls.io/repos/github/mster/fireferret/badge.svg?branch=test/code-coverage)](https://coveralls.io/github/mster/fireferret?branch=test/code-coverage)
 
 [![NPM](https://nodei.co/npm/fireferret.png)](https://nodei.co/npm/fireferret/)
 
@@ -99,15 +100,15 @@ Used for connection and configuration.
 ```js
 options = {
   wideMatch: false,
-  redisJSON: true,
-  globPagination: true,
-  REDIS_OPTS: {
+  redis: {
     /* ... */
   },
-  MONGO_OPTS: {
+  mongo: {
     /* ... */
   },
 };
+
+const ferret = new FireFerret(options);
 ```
 
 ### Wide-match
@@ -116,40 +117,28 @@ Attempt to use previously cached queries as a means of fulfilling a non-cached q
 
 Enable wide-match by setting `wideMatch: true` in `options`.
 
-### Redis-JSON
+### MongoDB Options
 
-By default FireFerret uses hashes to cache individual documents. That being said, you can use (or make your own) redis json client to request and modify object properties specifically.
+FireFerret uses the [mongodb](https://www.npmjs.com/package/mongodb) package for handling connections and queries to MongoDB. On top of the mongodb's options, FireFerret supports additional configuration options.
 
-If the redis-json option is disabled, documents will be cached as strings.
-
-Disable redis-json by setting `redisJSON: false` in `options`.
-
-### Glob-Pagination
-
-Coming soon ...
+```js
+options.mongo = {
+  uri: "mongodb+srv://foo.net",
+  db: "bar",
+  collection: "baz",
+  /* more ... */
+};
+```
 
 ### Redis Options
 
 FireFerret uses the [redis](https://www.npmjs.com/package/redis) package for everything Redis. That being said, FireFerret supports all of Node Redis' options.
 
 ```js
-options.REDIS_OPTS = {
+options.redis = {
   host: "redis.foo.com",
   port: 6379,
   auth_pass: "bar",
-  /* more ... */
-};
-```
-
-### MongoDB Options
-
-FireFerret uses the [mongodb](https://www.npmjs.com/package/mongodb) package for handling connections and queries to MongoDB. On top of the mongodb's options, FireFerret supports additional configuration options.
-
-```js
-options.MONGO_OPTS = {
-  uri: "mongodb+srv://foo.net",
-  db: "bar",
-  collection: "baz",
   /* more ... */
 };
 ```

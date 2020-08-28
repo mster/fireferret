@@ -1,6 +1,6 @@
 {
   "name": "fireferret",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "Asynchronous MongoDB document query and caching client for Node.js",
   "main": "index.js",
   "files": [
@@ -12,6 +12,7 @@
   },
   "scripts": {
     "test": "npm run lint && jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "echo \"Running Lint...\" && standard --verbose && echo \"Lint Successful!\"",
     "lint-fix": "echo \"Using \"standard --fix\"\" && standard --fix && echo \"All fixed up!\""
   },
@@ -31,10 +32,13 @@
   "dependencies": {
     "matflap": "0.0.0",
     "mongodb": "^3.5.9",
+    "pump": "^3.0.0",
     "redis": "^3.0.2",
-    "sliced": "^1.0.1"
+    "sliced": "^1.0.1",
+    "through2": "^4.0.2"
   },
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "jest": "^26.4.2",
     "standard": "^14.3.4"
   }
