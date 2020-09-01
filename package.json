@@ -31,8 +31,10 @@
   "dependencies": {
     "matflap": "0.0.0",
     "mongodb": "^3.5.9",
+    "pump": "^3.0.0",
     "redis": "^3.0.2",
-    "sliced": "^1.0.1"
+    "sliced": "^1.0.1",
+    "through2": "^4.0.2"
   },
   "devDependencies": {
     "jest": "^26.4.2",
