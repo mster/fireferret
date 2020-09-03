@@ -13,6 +13,7 @@ Document query and caching client for Node.js
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ "JavaScript Standard Style")
 [![Build Status](https://travis-ci.com/mster/fireferret.svg?branch=master)](https://travis-ci.com/mster/fireferret)
+[![Coverage Status](https://coveralls.io/repos/github/mster/fireferret/badge.svg?branch=test/code-coverage)](https://coveralls.io/github/mster/fireferret?branch=test/code-coverage)
 
 [![NPM](https://nodei.co/npm/fireferret.png)](https://nodei.co/npm/fireferret/)
 
