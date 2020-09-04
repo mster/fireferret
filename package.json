@@ -13,7 +13,7 @@
   "scripts": {
     "test": "npm run lint && jest",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "jsdoc": "jsdoc ./lib/* -d ./docs",
+    "jsdoc": "jsdoc ./lib/* README.md -d ./docs",
     "lint": "echo \"Running Lint...\" && standard ./lib/*.js --verbose && echo \"Lint Successful!\"",
     "lint-fix": "echo \"Using \"standard --fix\"\" && standard --fix && echo \"All fixed up!\""
   },

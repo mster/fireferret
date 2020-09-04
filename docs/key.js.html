@@ -26,13 +26,13 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>"use strict";
+            <pre class="prettyprint source linenums"><code>'use strict'
 
-const { FFError } = require("./error");
+const { FFError } = require('./error')
 const {
   SPECIAL_CHARS: { QUERY_DELIMITER },
-  validatePaginationOpts,
-} = require("./utils");
+  validatePaginationOpts
+} = require('./utils')
 
 /**
  * Creates a new QueryKey instance.
@@ -44,64 +44,64 @@ const {
  * @param {String} [ns='ff'] - The namescape to use for keys.
  */
 class QueryKey {
-  constructor(dbName, collectionName, query, queryOptions, ns = "ff") {
-    this.ns = ns;
-    this.dbName = dbName;
-    this.collectionName = collectionName;
-    this.query = query;
-    this.queryOptions = queryOptions;
+  constructor (dbName, collectionName, query, queryOptions, ns = 'ff') {
+    this.ns = ns
+    this.dbName = dbName
+    this.collectionName = collectionName
+    this.query = query
+    this.queryOptions = queryOptions
 
     /* INTERNAL -- cache stringifies */
-    this._queryString = null;
-    this._toString = null;
-    this._baseKey = null;
-    this._oneKey = null;
+    this._queryString = null
+    this._toString = null
+    this._baseKey = null
+    this._oneKey = null
   }
 
   /**
    * Generates a QueryKey string without query options
    * @returns {String} The base key string.
    */
-  baseKey() {
+  baseKey () {
     if (!this._baseKey) {
-      this._baseKey = this.toString(true);
+      this._baseKey = this.toString(true)
     }
 
-    return this._baseKey;
+    return this._baseKey
   }
 
   /**
    * Generates a QueryKey string to be used with individual retrievals.
    * @returns {String} The one key string.
    */
-  oneKey() {
+  oneKey () {
     if (!this._oneKey) {
-      this._oneKey = `${this.ns}:${this.dbName}::${this.collectionName}:findOne`;
+      this._oneKey = `${this.ns}:${this.dbName}::${this.collectionName}:findOne`
     }
 
-    return this._oneKey;
+    return this._oneKey
   }
 
   /**
    * Generate a QueryKey string which includes only the query itself.
    * @returns {String} The Query string.
    */
-  queryString() {
+  queryString () {
     if (!this._queryString) {
       this._queryString = JSON.stringify(
         this.query,
         (k, value) => {
-          if (value.constructor.name === "RegExp") {
+          if (value.constructor.name === 'RegExp') {
             /* Redis doesnt like backslashes in keys */
-            return encodeURI(value.toString());
+            return encodeURI(value.toString())
           }
-          return value;
+          return value
         },
         0
-      );
+      )
     }
 
-    return this._queryString;
+    return this._queryString
   }
 
   /**
@@ -109,21 +109,21 @@ class QueryKey {
    * @param {boolean} [baseKeyOnly=false] - Generate only the base key variant.
    * @returns {String} The QueryKey string.
    */
-  toString(baseKeyOnly = false) {
-    if (this._toString &amp;&amp; !baseKeyOnly) return this._toString;
+  toString (baseKeyOnly = false) {
+    if (this._toString &amp;&amp; !baseKeyOnly) return this._toString
 
     try {
       const stringQuery = JSON.stringify(
         this.query,
         (k, value) => {
-          if (value.constructor.name === "RegExp") {
+          if (value.constructor.name === 'RegExp') {
             /* Redis doesnt like backslashes in keys */
-            return encodeURI(value.toString());
+            return encodeURI(value.toString())
           }
-          return value;
+          return value
         },
         0
-      );
+      )
 
       /* Full key */
       if (
@@ -131,42 +131,42 @@ class QueryKey {
         this.queryOptions &amp;&amp;
         Object.keys(this.queryOptions).length !== 0
       ) {
-        const options = {};
+        const options = {}
 
-        const pageOptions = validatePaginationOpts(this.queryOptions);
+        const pageOptions = validatePaginationOpts(this.queryOptions)
 
         if (pageOptions) {
-          options.start = pageOptions.start;
-          options.end = pageOptions.end;
+          options.start = pageOptions.start
+          options.end = pageOptions.end
         }
 
-        const stringFilteredOpts = JSON.stringify(options);
+        const stringFilteredOpts = JSON.stringify(options)
 
-        const stringKey = `${this.ns}:${this.dbName}::${this.collectionName}:query${QUERY_DELIMITER}${stringQuery}::${stringFilteredOpts}`;
-        this._toString = stringKey;
+        const stringKey = `${this.ns}:${this.dbName}::${this.collectionName}:query${QUERY_DELIMITER}${stringQuery}::${stringFilteredOpts}`
+        this._toString = stringKey
 
-        return stringKey;
+        return stringKey
       }
 
       /* Base key */
-      const stringKey = `${this.ns}:${this.dbName}::${this.collectionName}:query${QUERY_DELIMITER}${stringQuery}`;
-      return stringKey;
+      const stringKey = `${this.ns}:${this.dbName}::${this.collectionName}:query${QUERY_DELIMITER}${stringQuery}`
+      return stringKey
     } catch (err) {
       throw new FFError(
-        "InternalError",
-        "key toString has failed." + err,
-        "QueryKey::toString",
+        'InternalError',
+        'key toString has failed.' + err,
+        'QueryKey::toString',
         err
-      );
+      )
     }
   }
 
-  inspect() {
-    return this.toString();
+  inspect () {
+    return this.toString()
   }
 }
 
-module.exports = { QueryKey };
+module.exports = { QueryKey }
 </code></pre>
         </article>
     </section>
@@ -183,7 +183,7 @@ module.exports = { QueryKey };
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 19:54:49 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 20:35:29 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

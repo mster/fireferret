@@ -26,19 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>"use strict";
+            <pre class="prettyprint source linenums"><code>'use strict'
 
-const pump = require("pump");
-const { PassThrough } = require("stream");
+const pump = require('pump')
+const { PassThrough } = require('stream')
 
-const RedisClient = require("./redis");
-const { makeBucket, hashFunction } = require("./bucket");
+const RedisClient = require('./redis')
+const { makeBucket, hashFunction } = require('./bucket')
 const {
   SYMBOLS: { NULL_DOC, EMPTY_QUERY },
   validatePaginationOpts,
-  filterAvailableWideMatch,
-} = require("./utils");
-const debug = require("util").debuglog("fireferret::cache");
+  filterAvailableWideMatch
+} = require('./utils')
+const debug = require('util').debuglog('fireferret::cache')
 
 /**
  * Creates a new Cache instance.
@@ -48,9 +48,9 @@ const debug = require("util").debuglog("fireferret::cache");
  * @returns {Cache} - The FireFerret Cache controller.
  */
 class Cache {
-  constructor(options, redisOptions) {
-    this.options = options;
-    this.redis = new RedisClient(redisOptions);
+  constructor (options, redisOptions) {
+    this.options = options
+    this.redis = new RedisClient(redisOptions)
   }
 
   /**
@@ -58,26 +58,26 @@ class Cache {
    * @param {QueryKey} queryKey - The QueryKey to use when caching.
    * @param {Array} documents - The documents to cache (from MongoDB).
    */
-  async cacheDocuments(queryKey, documents) {
+  async cacheDocuments (queryKey, documents) {
     if (documents.length === 0) {
-      debug("caching EMPTY_QUERY into QueryList");
+      debug('caching EMPTY_QUERY into QueryList')
 
-      this.redis.lpush(queryKey.toString(), [EMPTY_QUERY.description]);
+      this.redis.lpush(queryKey.toString(), [EMPTY_QUERY.description])
 
-      return;
+      return
     }
 
-    const { cacheOps, ids } = this.bucketify(documents);
+    const { cacheOps, ids } = this.bucketify(documents)
 
-    const hashes = Object.keys(cacheOps);
+    const hashes = Object.keys(cacheOps)
 
-    debug(`caching ${documents.length} documents in ${hashes.length} buckets`);
+    debug(`caching ${documents.length} documents in ${hashes.length} buckets`)
 
     for (let i = 0; i &lt; hashes.length; i++) {
-      this.redis.hmset(hashes[i], cacheOps[hashes[i]]._);
+      this.redis.hmset(hashes[i], cacheOps[hashes[i]]._)
     }
 
-    this.redis.batchlpush(queryKey.toString(), ids);
+    this.redis.batchlpush(queryKey.toString(), ids)
   }
 
   /**
@@ -86,22 +86,22 @@ class Cache {
    * @param {boolean} [stream=false] - Return as a stream.
    * @param {boolean} [ndjson=false] - When streaming, use the ndJSON spec.
    */
-  async lookupDocuments(queryList, stream = false, ndjson = false) {
-    const cacheOps = this.debucketify(queryList);
+  async lookupDocuments (queryList, stream = false, ndjson = false) {
+    const cacheOps = this.debucketify(queryList)
 
     if (!stream) {
-      debug(`looking up ${queryList.length} documents`);
+      debug(`looking up ${queryList.length} documents`)
 
-      const rawDocuments = (await this.redis.multihmget(cacheOps)).flat();
-      return rawDocuments.map((element) => JSON.parse(element));
+      const rawDocuments = (await this.redis.multihmget(cacheOps)).flat()
+      return rawDocuments.map((element) => JSON.parse(element))
     }
 
-    const source = await this.redis.multihmget(cacheOps, true);
-    const dest = PassThrough();
+    const source = await this.redis.multihmget(cacheOps, true)
+    const dest = PassThrough()
 
-    pump(source, dest);
+    pump(source, dest)
 
-    return dest;
+    return dest
   }
 
   /**
@@ -109,22 +109,23 @@ class Cache {
    * @param {Array} queryList - The list of document IDs.
    * @returns {Object} The cache operations to carry out.
    */
-  debucketify(queryList) {
-    if (!queryList || queryList.length === 0) return null;
+  debucketify (queryList) {
+    if (!queryList || queryList.length === 0) return null
 
-    const cacheOps = {};
+    const cacheOps = {}
     for (let i = 0; i &lt; queryList.length; i++) {
-      const documentID = queryList[i];
-      const hash = hashFunction(documentID);
+      const documentID = queryList[i]
+      const hash = hashFunction(documentID)
 
-      const existingHash = cacheOps[hash];
+      const existingHash = cacheOps[hash]
 
-      if (existingHash) existingHash.push(documentID);
-      else cacheOps[hash] = [documentID];
+      if (existingHash) existingHash.push(documentID)
+      else cacheOps[hash] = [documentID]
     }
 
-    return cacheOps;
+    return cacheOps
   }
+
   /**
    *
    * @typedef CacheOperations
@@ -136,24 +137,24 @@ class Cache {
    * @param {Array} documents - Array of MongoDB documents to cache.
    * @returns {CacheOperations}
    */
-  bucketify(documents) {
-    const cacheOps = {};
-    const ids = [];
+  bucketify (documents) {
+    const cacheOps = {}
+    const ids = []
 
     /* generate our cache operations */
     for (let i = 0; i &lt; documents.length; i++) {
-      const hexString = documents[i]._id.toHexString();
+      const hexString = documents[i]._id.toHexString()
 
-      ids.push(hexString);
+      ids.push(hexString)
 
-      const hash = hashFunction(hexString);
-      const existingBucket = cacheOps[hash];
+      const hash = hashFunction(hexString)
+      const existingBucket = cacheOps[hash]
 
-      if (existingBucket) existingBucket.add(documents[i]);
-      else cacheOps[hash] = makeBucket(hash, documents[i]);
+      if (existingBucket) existingBucket.add(documents[i])
+      else cacheOps[hash] = makeBucket(hash, documents[i])
     }
 
-    return { cacheOps, ids };
+    return { cacheOps, ids }
   }
 
   /**
@@ -167,20 +168,20 @@ class Cache {
    * @param {QueryKey} queryKey - The QueryKey
    * @returns {QueryMatch}
    */
-  async getQueryList(queryKey) {
-    let matchType = null;
-    let queryList = await this.redis.lrange(queryKey.toString());
+  async getQueryList (queryKey) {
+    let matchType = null
+    let queryList = await this.redis.lrange(queryKey.toString())
 
     if (!queryList || queryList.length === 0) {
       if (this.options.wideMatch) {
-        queryList = await this.getWideMatch(queryKey);
-        matchType = "wide";
+        queryList = await this.getWideMatch(queryKey)
+        matchType = 'wide'
       } else {
-        queryList = null;
+        queryList = null
       }
     }
 
-    return { queryList, matchType };
+    return { queryList, matchType }
   }
 
   /**
@@ -188,8 +189,8 @@ class Cache {
    * @param {QueryKey} queryKey - The QueryKey.
    * @param {Array} queryList - The list of document IDs.
    */
-  async setQueryList(queryKey, queryList) {
-    return this.redis.batchlpush(queryKey.toString(), queryList);
+  async setQueryList (queryKey, queryList) {
+    return this.redis.batchlpush(queryKey.toString(), queryList)
   }
 
   /**
@@ -197,8 +198,8 @@ class Cache {
    * @param {String} queryHash - The hash name version of a query.
    * @param {String} query - The query to retreive.
    */
-  async getQueryHash(queryHash, query) {
-    return this.redis.hget(queryHash, query);
+  async getQueryHash (queryHash, query) {
+    return this.redis.hget(queryHash, query)
   }
 
   /**
@@ -206,9 +207,9 @@ class Cache {
    * @param {String} queryHash - The hash name version of a query.
    * @param  {...any} args - The query-documentID pair to set.
    */
-  async setQueryHash(queryHash, ...args) {
+  async setQueryHash (queryHash, ...args) {
     // [queryHash, query] = args
-    return this.redis.hset(queryHash, args);
+    return this.redis.hset(queryHash, args)
   }
 
   /**
@@ -216,10 +217,10 @@ class Cache {
    * @param {String} documentID - The document ID as a string.
    * @returns {String} The document data as a string.
    */
-  async getDocument(documentID) {
-    const hash = hashFunction(documentID);
+  async getDocument (documentID) {
+    const hash = hashFunction(documentID)
 
-    return this.redis.hget(hash, documentID);
+    return this.redis.hget(hash, documentID)
   }
 
   /**
@@ -227,20 +228,20 @@ class Cache {
    * @param {Object} document - The document to cache.
    * @param {String|ObjectID} requestedID - The document ID as a ObjectID instance or String.
    */
-  async setDocument(document, requestedID) {
+  async setDocument (document, requestedID) {
     const documentID =
-      document &amp;&amp; document._id ? document._id.toHexString() : requestedID;
-    const hash = hashFunction(documentID);
+      document &amp;&amp; document._id ? document._id.toHexString() : requestedID
+    const hash = hashFunction(documentID)
 
     if (document) {
-      document = JSON.stringify(document);
+      document = JSON.stringify(document)
     } else {
-      document = NULL_DOC.description;
+      document = NULL_DOC.description
     }
 
-    const args = [documentID, document];
+    const args = [documentID, document]
 
-    return this.redis.hset(hash, args);
+    return this.redis.hset(hash, args)
   }
 
   /**
@@ -248,47 +249,47 @@ class Cache {
    * @param {QueryKey} queryKey - The QueryKey.
    * @returns {Array|0}
    */
-  async getWideMatch(queryKey) {
-    const scanPattern = `${queryKey.baseKey()}*`;
+  async getWideMatch (queryKey) {
+    const scanPattern = `${queryKey.baseKey()}*`
 
-    const [, cachedQueries] = await this.redis.scan(0, scanPattern);
+    const [, cachedQueries] = await this.redis.scan(0, scanPattern)
 
     if (cachedQueries &amp;&amp; cachedQueries.length > 0) {
-      const pageOptions = validatePaginationOpts(queryKey.queryOptions);
+      const pageOptions = validatePaginationOpts(queryKey.queryOptions)
 
       const { targetQuery, rangeOptions } = filterAvailableWideMatch(
         cachedQueries,
         pageOptions
-      );
+      )
 
       if (targetQuery &amp;&amp; rangeOptions) {
         return this.redis.lrange(
           targetQuery,
           rangeOptions.start,
           rangeOptions.end - 1
-        );
+        )
       }
     }
 
-    return 0;
+    return 0
   }
 
   /**
    * Attempts to establish a connection to Redis
    */
-  async connect() {
-    return this.redis.connect();
+  async connect () {
+    return this.redis.connect()
   }
 
   /**
    * Attempts to close the Redis client collection.
    */
-  async close() {
-    return this.redis.close();
+  async close () {
+    return this.redis.close()
   }
 }
 
-module.exports = Cache;
+module.exports = Cache
 </code></pre>
         </article>
     </section>
@@ -305,7 +306,7 @@ module.exports = Cache;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 19:54:49 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 20:35:29 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
