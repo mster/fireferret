@@ -1,7 +1,7 @@
 {
   "name": "fireferret",
-  "version": "0.3.0",
-  "description": "Asynchronous MongoDB document query and caching client for Node.js",
+  "version": "0.3.1",
+  "description": "An asynchronous auto-caching query client for MongoDB.",
   "main": "index.js",
   "files": [
     "index.js",
@@ -13,8 +13,9 @@
   "scripts": {
     "test": "npm run lint && jest",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "lint": "echo \"Running Lint...\" && standard --verbose && echo \"Lint Successful!\"",
-    "lint-fix": "echo \"Using \"standard --fix\"\" && standard --fix && echo \"All fixed up!\""
+    "generate-docs": "jsdoc index.js ./lib/* README.md -d ./docs -c ./jsdoc.json",
+    "lint": "echo \"Running Lint...\" && standard ./lib/*.js --verbose && echo \"Lint Successful!\"",
+    "lint-fix": "echo \"Using \"standard --fix\"\" && standard ./lib/*.js --fix && echo \"All fixed up!\""
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,9 @@
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
+    "jaguarjs-jsdoc": "^1.1.0",
     "jest": "^26.4.2",
+    "jsdoc": "^3.6.5",
     "standard": "^14.3.4"
   }
 }

@@ -17,128 +17,71 @@ Document query and caching client for Node.js
 
 [![NPM](https://nodei.co/npm/fireferret.png)](https://nodei.co/npm/fireferret/)
 
-## API
+## References
 
-### new FireFerret ( options )
+| What?             | Where?                                                                                                                                   |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| API-Documentation | [https://mster.github.io/fireferret/](https://mster.github.io/fireferret/)                                                               |
+| Config            | [https://mster.github.io/fireferret/Options.html#.FireFerretOptions](https://mster.github.io/fireferret/Options.html#.FireFerretOptions) |
+| Source            | [https://github.com/mster/fireferret](https://github.com/mster/fireferret)                                                               |
+| MongoDB           | [https://www.mongodb.com/](https://www.mongodb.com/)                                                                                     |
+| Redis             | [https://redis.io/](https://redis.io/)                                                                                                   |
 
-Creates a new FireFerret client.
+## Requirements
 
-- `options` : `<object>`
+FireFerret requires MongoDB and Redis instances. These may be local or remote, Ferret don't give-a-hoot!
 
-  Client options. See [options](#options)
+## Usage
 
-- Returns : `<FireFerret-Client>`
-
-### FireFerret.connect( ) : `<Async-Function>`
-
-- Returns : `<Promise>`
-
-  - resolve : `'ok'`
-
-    Connection to both data stores was successful.
-
-  - reject : `<FireFerret-Error>`
-
-### FireFerret.close( ) : `<Async-Function>`
-
-Closes the client.
-
-- Returns : `<Promise>`
-
-  - resolve : `'ok'`
-
-    Connections have been closed successfully and client has exited.
-
-  - reject : `<FireFerret-Error>`
-
-### FireFerret.fetch( query [, options ] ) : `<Async-Function>`
-
-- `query`: `<object>`
-
-  A MongoDB style query.
-
-- `options`: `<object>`
-
-  Supported fetch options
-
-- Returns : `<Promise>`
-
-  - resolve : `docs` `<Array>`
-
-  - reject : `<FireFerret-Error>`
-
-### FireFerret.fetchById( id ) : `<Async-Function>`
-
-- `id`: `<string>` | `<ObjectID>`
-
-  A MongoDB document id as a String or ObjectID.
-
-- Returns : `<Promise>`
-
-  - resolve : `<object>` | `null`
-
-  - reject : `<FireFerret-Error>`
-
-### FireFerret.fetchOne( query ) : `<Async-Function>`
-
-- `query`: `<object>`
-
-  A MongoDB style query.
-
-- Returns : `<Promise>`
-
-  - resolve : `<object>` | `null`
-
-  - reject : `<FireFerret-Error>`
-
-## Options
-
-FireFerret's options in detail.
-
-Used for connection and configuration.
+Query some documents using pagination.
 
 ```js
-options = {
-  wideMatch: false,
-  redis: {
-    /* ... */
-  },
-  mongo: {
-    /* ... */
-  },
-};
+const FireFerret = require("FireFerret");
 
 const ferret = new FireFerret(options);
+await ferret.connect();
+
+const docs = await ferret.fetch(
+  { genre: { $in: ["Djent", "Math Metal"] } },
+  { pagination: { page: 3, size: 20 } }
+);
 ```
 
-### Wide-match
-
-Attempt to use previously cached queries as a means of fulfilling a non-cached query. Wide-match can drastically improve performance of applications that frequently use `20;50;100` pagination.
-
-Enable wide-match by setting `wideMatch: true` in `options`.
-
-### MongoDB Options
-
-FireFerret uses the [mongodb](https://www.npmjs.com/package/mongodb) package for handling connections and queries to MongoDB. On top of the mongodb's options, FireFerret supports additional configuration options.
+FireFerret supports streaming queries.
 
 ```js
-options.mongo = {
-  uri: "mongodb+srv://foo.net",
-  db: "bar",
-  collection: "baz",
-  /* more ... */
-};
+const awesomePackages = await ferret.fetch({ author: "nw" }, { stream: true });
+
+awesomePackages.pipe(res);
 ```
 
-### Redis Options
-
-FireFerret uses the [redis](https://www.npmjs.com/package/redis) package for everything Redis. That being said, FireFerret supports all of Node Redis' options.
+Using the Wide-Match strategy.
 
 ```js
-options.redis = {
-  host: "redis.foo.com",
-  port: 6379,
-  auth_pass: "bar",
-  /* more ... */
-};
+const smartFerret = new FireFerret({ /* ... ,*/ wideMatch: true });
+await smartFerret.connect();
+
+const query = { candidates: { $ne: "Drumpf", $exists: true } };
+
+/* cache miss */
+const first50docs = await smartFerret.fetch(query, {
+  pagination: { page: 1, size: 50 },
+});
+
+/* cache hit */
+const first20docs = await smartFerret.fetch(query, {
+  pagination: { page: 1, size: 20 },
+});
+
+/* anotha one, cache hit */
+const first10docs = await smartFerret.fetch(query, {
+  pagination: { page: 1, size: 10 },
+});
+
+/* anotha one, cache hit */
+const firstDoc = await smartFerret.fetchOne(query);
 ```
+
+## Contributing
+
+We welcome you with open arms. Contributions are appreciate after `v1.0.0`

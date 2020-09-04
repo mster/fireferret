@@ -1,0 +1,35 @@
+{
+  "tags": {
+    "allowUnknownTags": false
+  },
+  "source": {
+    "includePattern": "\\.js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "template": "./node_modules/jaguarjs-jsdoc",
+    "encoding": "utf8",
+    "destination": "./docs/",
+    "recurse": true,
+    "verbose": true
+  },
+  "templates": {
+    "applicationName": "FireFerret",
+    "openGraph": {
+      "title": "FireFerret",
+      "type": "website",
+      "image": "",
+      "site_name": "FireFerret API-Documentation",
+      "url": ""
+    },
+    "meta": {
+      "title": "FireFerret",
+      "description": "An asynchronous auto-caching query client for use with MongoDB.",
+      "keyword": ["node", "node.js", "mongodb", "redis", "client", "auto-cache"]
+    },
+    "linenums": true,
+    "disqus": "",
+    "googleAnalytics": ""
+  }
+}
