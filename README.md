@@ -19,10 +19,10 @@ Document query and caching client for Node.js
 
 ## References
 
-| What?         | Where?                                        |
-| ------------- | --------------------------------------------- |
-| API           | https://mster.github.io/fireferret/FireFerret |
-| Configuration | Coming soon                                   |
+| What?         | Where?                                                                                         |
+| ------------- | ---------------------------------------------------------------------------------------------- |
+| API           | [https://mster.github.io/fireferret/FireFerret](https://mster.github.io/fireferret/FireFerret) |
+| Configuration | Coming soon                                                                                    |
 
 ## Requirements
 
