@@ -54,143 +54,70 @@
 <a href="https://travis-ci.com/mster/fireferret"><img src="https://travis-ci.com/mster/fireferret.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/github/mster/fireferret?branch=test/code-coverage"><img src="https://coveralls.io/repos/github/mster/fireferret/badge.svg?branch=test/code-coverage" alt="Coverage Status"></a></p>
 <p><a href="https://nodei.co/npm/fireferret/"><img src="https://nodei.co/npm/fireferret.png" alt="NPM"></a></p>
-<h2>API</h2>
-<h3>new FireFerret ( options )</h3>
-<p>Creates a new FireFerret client.</p>
-<ul>
-<li>
-<p><code>options</code> : <code>&lt;object&gt;</code></p>
-<p>Client options. See <a href="#options">options</a></p>
-</li>
-<li>
-<p>Returns : <code>&lt;FireFerret-Client&gt;</code></p>
-</li>
-</ul>
-<h3>FireFerret.connect( ) : <code>&lt;Async-Function&gt;</code></h3>
-<ul>
-<li>
-<p>Returns : <code>&lt;Promise&gt;</code></p>
-<ul>
-<li>
-<p>resolve : <code>'ok'</code></p>
-<p>Connection to both data stores was successful.</p>
-</li>
-<li>
-<p>reject : <code>&lt;FireFerret-Error&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3>FireFerret.close( ) : <code>&lt;Async-Function&gt;</code></h3>
-<p>Closes the client.</p>
-<ul>
-<li>
-<p>Returns : <code>&lt;Promise&gt;</code></p>
-<ul>
-<li>
-<p>resolve : <code>'ok'</code></p>
-<p>Connections have been closed successfully and client has exited.</p>
-</li>
-<li>
-<p>reject : <code>&lt;FireFerret-Error&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3>FireFerret.fetch( query [, options ] ) : <code>&lt;Async-Function&gt;</code></h3>
-<ul>
-<li>
-<p><code>query</code>: <code>&lt;object&gt;</code></p>
-<p>A MongoDB style query.</p>
-</li>
-<li>
-<p><code>options</code>: <code>&lt;object&gt;</code></p>
-<p>Supported fetch options</p>
-</li>
-<li>
-<p>Returns : <code>&lt;Promise&gt;</code></p>
-<ul>
-<li>
-<p>resolve : <code>docs</code> <code>&lt;Array&gt;</code></p>
-</li>
-<li>
-<p>reject : <code>&lt;FireFerret-Error&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3>FireFerret.fetchById( id ) : <code>&lt;Async-Function&gt;</code></h3>
-<ul>
-<li>
-<p><code>id</code>: <code>&lt;string&gt;</code> | <code>&lt;ObjectID&gt;</code></p>
-<p>A MongoDB document id as a String or ObjectID.</p>
-</li>
-<li>
-<p>Returns : <code>&lt;Promise&gt;</code></p>
-<ul>
-<li>
-<p>resolve : <code>&lt;object&gt;</code> | <code>null</code></p>
-</li>
-<li>
-<p>reject : <code>&lt;FireFerret-Error&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3>FireFerret.fetchOne( query ) : <code>&lt;Async-Function&gt;</code></h3>
-<ul>
-<li>
-<p><code>query</code>: <code>&lt;object&gt;</code></p>
-<p>A MongoDB style query.</p>
-</li>
-<li>
-<p>Returns : <code>&lt;Promise&gt;</code></p>
-<ul>
-<li>
-<p>resolve : <code>&lt;object&gt;</code> | <code>null</code></p>
-</li>
-<li>
-<p>reject : <code>&lt;FireFerret-Error&gt;</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2>Options</h2>
-<p>FireFerret's options in detail.</p>
-<p>Used for connection and configuration.</p>
-<pre class="prettyprint source lang-js"><code>options = {
-  wideMatch: false,
-  redis: {
-    /* ... */
-  },
-  mongo: {
-    /* ... */
-  },
-};
+<h2>References</h2>
+<table>
+<thead>
+<tr>
+<th>What?</th>
+<th>Where?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API</td>
+<td>https://mster.github.io/fireferret/FireFerret</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>Coming soon</td>
+</tr>
+</tbody>
+</table>
+<h2>Requirements</h2>
+<p>FireFerret requires MongoDB and Redis instances. These may be local or remote, Ferret don't give-a-hoot!</p>
+<h2>Usage</h2>
+<p>Query some documents using pagination.</p>
+<pre class="prettyprint source lang-js"><code>const FireFerret = require(&quot;FireFerret&quot;);
 
 const ferret = new FireFerret(options);
+await ferret.connect();
+
+const docs = await ferret.fetch(
+  { genre: { $in: [&quot;Djent&quot;, &quot;Math Metal&quot;] } },
+  { pagination: { page: 3, size: 20 } }
+);
 </code></pre>
-<h3>Wide-match</h3>
-<p>Attempt to use previously cached queries as a means of fulfilling a non-cached query. Wide-match can drastically improve performance of applications that frequently use <code>20;50;100</code> pagination.</p>
-<p>Enable wide-match by setting <code>wideMatch: true</code> in <code>options</code>.</p>
-<h3>MongoDB Options</h3>
-<p>FireFerret uses the <a href="https://www.npmjs.com/package/mongodb">mongodb</a> package for handling connections and queries to MongoDB. On top of the mongodb's options, FireFerret supports additional configuration options.</p>
-<pre class="prettyprint source lang-js"><code>options.mongo = {
-  uri: &quot;mongodb+srv://foo.net&quot;,
-  db: &quot;bar&quot;,
-  collection: &quot;baz&quot;,
-  /* more ... */
-};
+<p>FireFerret supports streaming queries.</p>
+<pre class="prettyprint source lang-js"><code>const awesomePackages = await ferret.fetch({ author: &quot;nw&quot; }, { stream: true });
+
+awesomePackages.pipe(res);
 </code></pre>
-<h3>Redis Options</h3>
-<p>FireFerret uses the <a href="https://www.npmjs.com/package/redis">redis</a> package for everything Redis. That being said, FireFerret supports all of Node Redis' options.</p>
-<pre class="prettyprint source lang-js"><code>options.redis = {
-  host: &quot;redis.foo.com&quot;,
-  port: 6379,
-  auth_pass: &quot;bar&quot;,
-  /* more ... */
-};
-</code></pre></article>
+<p>Using the Wide-Match strategy.</p>
+<pre class="prettyprint source lang-js"><code>const smartFerret = new FireFerret({ /* ... ,*/ wideMatch: true });
+await smartFerret.connect();
+
+const query = { candidates: { $ne: &quot;Drumpf&quot;, $exists: true } };
+
+/* cache miss */
+const first50docs = await smartFerret.fetch(query, {
+  pagination: { page: 1, size: 50 },
+});
+
+/* cache hit */
+const first20docs = await smartFerret.fetch(query, {
+  pagination: { page: 1, size: 20 },
+});
+
+/* anotha one, cache hit */
+const first10docs = await smartFerret.fetch(query, {
+  pagination: { page: 1, size: 10 },
+});
+
+/* anotha one, cache hit */
+const firstDoc = await smartFerret.fetchOne(query);
+</code></pre>
+<h2>Contributing</h2>
+<p>We welcome you with open arms. Contributions are appreciate after <code>v1.0.0</code></p></article>
     </section>
 
 
@@ -207,7 +134,7 @@ const ferret = new FireFerret(options);
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 20:35:29 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 21:33:43 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
