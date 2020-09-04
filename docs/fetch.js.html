@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: fetch.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: fetch.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+
+const {
+  SYMBOLS: { EMPTY_QUERY, CACHE_MISS, CACHE_HIT, NULL_DOC },
+  validatePaginationOpts,
+  getQueryVerdict,
+} = require("./utils");
+const { FFError } = require("./error");
+const { QueryKey } = require("./key");
+
+const debug = require("util").debuglog("fireferret::fetch");
+
+/**
+ * Fetch MongoDB documents from a query.
+ * @alias FireFerret.fetch
+ * @param {object} [query={}] - An optional cursor query object.
+ * @param {object} [options={}] - Optional settings.
+ * @param {boolean} [options.stream=false] - Return the documents as a stream.
+ * @param {boolean} [options.wideMatch=false] - Use Wide-Match strategy.
+ * @returns {array} documents
+ */
+async function fetch(query, options) {
+  if (!options) options = {};
+
+  if (options.constructor.name !== "Object") {
+    throw new FFError(
+      "InvalidOptions",
+      "options must be of type Object or null",
+      "fetch::fetch",
+      { options }
+    );
+  }
+
+  const queryKey = new QueryKey(
+    this.mongo.dbName,
+    this.mongo.collectionName,
+    query,
+    options
+  );
+
+  const { queryList, matchType } = await this.cache.getQueryList(queryKey);
+
+  const verdict = getQueryVerdict(queryList);
+  debug(verdict.description, "@", queryKey.toString());
+
+  if (CACHE_HIT === verdict) {
+    /* check match type and cache new QL if needed */
+    if (matchType === "wide") {
+      this.cache.setQueryList(queryKey, queryList);
+    }
+
+    return this.cache.lookupDocuments(queryList, options.stream);
+  }
+
+  if (CACHE_MISS === verdict) {
+    const pageOptions = validatePaginationOpts(options);
+    const mongoQueryOptions = {};
+
+    /* with pagination */
+    if (pageOptions) {
+      mongoQueryOptions.skip = pageOptions.start;
+      mongoQueryOptions.limit = pageOptions.size;
+
+      debug("using pagination", mongoQueryOptions);
+    }
+
+    if (!options.stream) {
+      const documents = await this.mongo.findDocs(
+        queryKey.query,
+        mongoQueryOptions
+      );
+
+      /* cache query */
+      this.cache.cacheDocuments(queryKey, documents);
+
+      return documents;
+    }
+
+    const { sink, capture } = await this.mongo.findDocsStream(
+      queryKey.query,
+      mongoQueryOptions
+    );
+
+    /* wait for Mongo to finish streaming us docs, then do a cache operation */
+    sink.on("end", () => {
+      /* only cache if we need to */
+      if (capture.length > 0) this.cache.cacheDocuments(queryKey, capture);
+    });
+
+    return sink;
+  }
+
+  if (EMPTY_QUERY === verdict) {
+    /* no document(s) found */
+    return null;
+  }
+}
+
+/**
+ * Fetch one MongoDB document from an ID string.
+ * @alias FireFerret.fetchById
+ * @param {string} documentID - The `_id` of the requested document.
+ * @returns {object|null} The document.
+ */
+async function fetchById(documentID) {
+  if (!documentID || documentID.constructor.name !== "String") {
+    throw new FFError(
+      "InvalidOptions",
+      "documentID is a required parameter and must be of type String",
+      "fetch::fetchById",
+      { documentID }
+    );
+  }
+
+  const document = await this.cache.getDocument(documentID);
+
+  if (document == null) {
+    debug("cache miss", { _id: documentID });
+
+    let doc = await this.mongo.findDocs({ _id: documentID });
+    if (!doc || !doc._id) doc = null;
+
+    this.cache.setDocument(doc, documentID);
+
+    return doc;
+  }
+
+  debug("cache hit", { _id: documentID });
+  if (document === NULL_DOC.description) return null;
+
+  const parsed = JSON.parse(document);
+  return parsed;
+}
+
+/**
+ * Fetch the first MongoDB document from a query.
+ * @alias FireFerret.fetchOne
+ * @param {object} [query={}] - An optional cursor query object.
+ * @returns {object|null} The document.
+ */
+async function fetchOne(query) {
+  const queryKey = new QueryKey(
+    this.mongo.dbName,
+    this.mongo.collectionName,
+    query,
+    null
+  );
+
+  const oneKey = queryKey.oneKey();
+  const queryString = queryKey.queryString();
+
+  const documentID = await this.cache.getQueryHash(oneKey, queryString);
+
+  if (!documentID) {
+    debug("cache miss", oneKey, queryString);
+    let document = await this.mongo.findOne(query);
+
+    if (!document || !document._id) {
+      document = null;
+    }
+
+    const documentID = document
+      ? document._id.toString()
+      : EMPTY_QUERY.description;
+
+    this.cache.setQueryHash(oneKey, queryString, documentID);
+    this.cache.setDocument(document);
+
+    return document;
+  }
+
+  debug("cache hit", oneKey, queryString);
+  const document = await this.cache.getDocument(documentID);
+
+  if (document === NULL_DOC.description) return null;
+
+  const parsed = JSON.parse(document);
+  return parsed;
+}
+
+module.exports = { fetch, fetchById, fetchOne };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Bucket.html">Bucket</a></li><li><a href="Cache.html">Cache</a></li><li><a href="FerretError.html">FerretError</a></li><li><a href="FireFerret.html">FireFerret</a></li><li><a href="QueryKey.html">QueryKey</a></li></ul><h3>Global</h3><ul><li><a href="global.html#generateOptions">generateOptions</a></li><li><a href="global.html#hashFunction">hashFunction</a></li><li><a href="global.html#makeBucket">makeBucket</a></li><li><a href="global.html#validatePaginationOpts">validatePaginationOpts</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 19:54:49 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
