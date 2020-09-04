@@ -15,7 +15,7 @@
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "jsdoc": "jsdoc ./lib/* README.md -d ./docs",
     "lint": "echo \"Running Lint...\" && standard ./lib/*.js --verbose && echo \"Lint Successful!\"",
-    "lint-fix": "echo \"Using \"standard --fix\"\" && standard --fix && echo \"All fixed up!\""
+    "lint-fix": "echo \"Using \"standard --fix\"\" && standard ./lib/*.js --fix && echo \"All fixed up!\""
   },
   "repository": {
     "type": "git",
