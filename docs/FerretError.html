@@ -226,12 +226,6 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="FireFerret.fetch"><a href="FireFerret.html#.fetch">fetch</a></li>
-            
-                <li data-name="FireFerret.fetchById"><a href="FireFerret.html#.fetchById">fetchById</a></li>
-            
-                <li data-name="FireFerret.fetchOne"><a href="FireFerret.html#.fetchOne">fetchOne</a></li>
-            
                 <li data-name="FireFerret#close"><a href="FireFerret.html#close">close</a></li>
             
                 <li data-name="FireFerret#connect"><a href="FireFerret.html#connect">connect</a></li>
@@ -283,105 +277,421 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="FerretError.html">Class: FerretError</h1>
         
 
 
+
+<section>
+    
+<header>
+    <h2>
+    FerretError
+    </h2>
+    
+        <div class="class-description"><p>Creates a new FireFerret Error</p></div>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="FerretError">
+            
+            new FerretError<span class="signature">(<span class="optional">name</span>, <span class="optional">msg</span>, <span class="optional">scope</span>, <span class="optional">error</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{FireFerretError}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            error.js, line 13
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
     
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
     
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">name</span>
 
 
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    'FireFerretError'
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The error name</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">msg</span>
 
 
-    <section>
-        <article class="readme"><h2>Hello there!</h2>
-<h3>Thank you for checking out FireFerret!</h3>
-<p>Currently (as of <code>v0.0.2</code>), FireFerret is unstable and deemed experiment. Please <strong>AVOID</strong> using this package in production until a stable version is released.</p>
-<p>Stable releases will be designated by versions greater than <code>1.0.0</code> and are planned for September 2020.</p>
-<h1>FireFerret</h1>
-<p>Document query and caching client for Node.js</p>
-<p><a target="_blank" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
-<a target="_blank" href="https://standardjs.com/" title="JavaScript Standard Style"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="JavaScript Style Guide: Standard"></a>
-<a target="_blank" href="https://travis-ci.com/mster/fireferret"><img src="https://travis-ci.com/mster/fireferret.svg?branch=master" alt="Build Status"></a>
-<a target="_blank" href="https://coveralls.io/github/mster/fireferret?branch=test/code-coverage"><img src="https://coveralls.io/repos/github/mster/fireferret/badge.svg?branch=test/code-coverage" alt="Coverage Status"></a></p>
-<p><a target="_blank" href="https://nodei.co/npm/fireferret/"><img src="https://nodei.co/npm/fireferret.png" alt="NPM"></a></p>
-<h2>References</h2>
-<table>
-<thead>
-<tr>
-<th>What?</th>
-<th>Where?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>API</td>
-<td><a target="_blank" href="https://mster.github.io/fireferret/FireFerret">https://mster.github.io/fireferret/FireFerret</a></td>
-</tr>
-<tr>
-<td>Configuration</td>
-<td>Coming soon</td>
-</tr>
-</tbody>
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The error message.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">scope</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The scope where the error was thrown.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">error</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The original error message, invalid options, or invalid argument list.</p></td>
+        </tr>
+	
+	
+	</tbody>
 </table>
-<h2>Requirements</h2>
-<p>FireFerret requires MongoDB and Redis instances. These may be local or remote, Ferret don't give-a-hoot!</p>
-<h2>Usage</h2>
-<p>Query some documents using pagination.</p>
-<pre class="prettyprint source lang-js"><code>const FireFerret = require(&quot;FireFerret&quot;);
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
-const ferret = new FireFerret(options);
-await ferret.connect();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
-const docs = await ferret.fetch(
-  { genre: { $in: [&quot;Djent&quot;, &quot;Math Metal&quot;] } },
-  { pagination: { page: 3, size: 20 } }
-);
-</code></pre>
-<p>FireFerret supports streaming queries.</p>
-<pre class="prettyprint source lang-js"><code>const awesomePackages = await ferret.fetch({ author: &quot;nw&quot; }, { stream: true });
+    
+    
 
-awesomePackages.pipe(res);
-</code></pre>
-<p>Using the Wide-Match strategy.</p>
-<pre class="prettyprint source lang-js"><code>const smartFerret = new FireFerret({ /* ... ,*/ wideMatch: true });
-await smartFerret.connect();
+    
 
-const query = { candidates: { $ne: &quot;Drumpf&quot;, $exists: true } };
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
 
-/* cache miss */
-const first50docs = await smartFerret.fetch(query, {
-  pagination: { page: 1, size: 50 },
-});
 
-/* cache hit */
-const first20docs = await smartFerret.fetch(query, {
-  pagination: { page: 1, size: 20 },
-});
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        FireFerretError
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
 
-/* anotha one, cache hit */
-const first10docs = await smartFerret.fetch(query, {
-  pagination: { page: 1, size: 10 },
-});
+    
+    
+    
+</dd>
 
-/* anotha one, cache hit */
-const firstDoc = await smartFerret.fetchOne(query);
-</code></pre>
-<h2>Contributing</h2>
-<p>We welcome you with open arms. Contributions are appreciate after <code>v1.0.0</code></p></article>
-    </section>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="toString">
+            
+            toString<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            error.js, line 27
+        </div>
+        
+    </div>
 
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Error to string.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        string
+                        
+                    
+            </td>
+            <td class="description last"><ul>
+<li>The FireFerretError as a string.</li>
+</ul></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+
+    
+</article>
+
+</section>  
 
 
 
@@ -390,7 +700,7 @@ const firstDoc = await smartFerret.fetchOne(query);
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:40:35 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:44:21 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>

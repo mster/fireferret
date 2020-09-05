@@ -13,7 +13,7 @@
   "scripts": {
     "test": "npm run lint && jest",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "generate-docs": "jsdoc index.js ./lib/* README.md -d ./jsdoc/docs -c ./jsdoc/jsdoc.json",
+    "generate-docs": "jsdoc index.js ./lib/* README.md -d ./docs -c ./jsdoc.json",
     "lint": "echo \"Running Lint...\" && standard ./lib/*.js --verbose && echo \"Lint Successful!\"",
     "lint-fix": "echo \"Using \"standard --fix\"\" && standard ./lib/*.js --fix && echo \"All fixed up!\""
   },

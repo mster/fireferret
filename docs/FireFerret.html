@@ -226,12 +226,6 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="FireFerret.fetch"><a href="FireFerret.html#.fetch">fetch</a></li>
-            
-                <li data-name="FireFerret.fetchById"><a href="FireFerret.html#.fetchById">fetchById</a></li>
-            
-                <li data-name="FireFerret.fetchOne"><a href="FireFerret.html#.fetchOne">fetchOne</a></li>
-            
                 <li data-name="FireFerret#close"><a href="FireFerret.html#close">close</a></li>
             
                 <li data-name="FireFerret#connect"><a href="FireFerret.html#connect">connect</a></li>
@@ -283,7 +277,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="FerretError.html">Class: FerretError</h1>
+        <h1 class="page-title" data-filename="FireFerret.html">Class: FireFerret</h1>
         
 
 
@@ -292,10 +286,10 @@
     
 <header>
     <h2>
-    FerretError
+    FireFerret
     </h2>
     
-        <div class="class-description"><p>Creates a new FireFerret Error</p></div>
+        <div class="class-description"><p>Creates a new FireFerret instance</p></div>
     
 </header>  
 
@@ -307,14 +301,14 @@
         
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="FerretError">
+        <h4 class="name" id="FireFerret">
             
-            new FerretError<span class="signature">(<span class="optional">name</span>, <span class="optional">msg</span>, <span class="optional">scope</span>, <span class="optional">error</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{FireFerretError}</span>
+            new FireFerret<span class="signature">(options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="FireFerret.html">FireFerret</a>}</span>
         </h4>
     
         
         <div class="tag-source">
-            error.js, line 13
+            client.js, line 22
         </div>
         
     </div>
@@ -342,8 +336,6 @@
 		<th>Type</th>
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -354,144 +346,23 @@
 	
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>options</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">name</span>
+<span class="param-type">options.FireFerretOptions</span>
 
 
             
             </td>
             
             
-                <td class="default">
-                
-                    'FireFerretError'
-                
-                </td>
-            
             
             <td class="description last">
                 
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                <p>The error name</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>msg</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">msg</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                <p>The error message.</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>scope</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">scope</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                <p>The scope where the error was thrown.</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">error</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    null
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                <p>The original error message, invalid options, or invalid argument list.</p></td>
+                <p>FireFerret configuration options</p></td>
         </tr>
 	
 	
@@ -552,7 +423,7 @@
             
             <td class="type">
             
-                        FireFerretError
+                        <a href="FireFerret.html">FireFerret</a>
                         
                     
             </td>
@@ -589,14 +460,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="toString">
+        <h4 class="name" id="close">
             
-            toString<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
+            <span class="type-signature ">async</span>close<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
         </h4>
     
         
         <div class="tag-source">
-            error.js, line 27
+            client.js, line 50
         </div>
         
     </div>
@@ -607,7 +478,7 @@
     
     
     <div class="description">
-        <p>Error to string.</p>
+        <p>Gracefully close all active connections.</p>
     </div>
     
 
@@ -674,9 +545,713 @@
                         
                     
             </td>
-            <td class="description last"><ul>
-<li>The FireFerretError as a string.</li>
-</ul></td>
+            <td class="description last">The close status.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="connect">
+            
+            <span class="type-signature ">async</span>connect<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{string}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            client.js, line 39
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Establish a connection to both data stores.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        string
+                        
+                    
+            </td>
+            <td class="description last">The connection status.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetch">
+            
+            <span class="type-signature ">async</span>fetch<span class="signature">(<span class="optional">query</span>, <span class="optional">options</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            client.js, line 74
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Fetch MongoDB documents from a query.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Query">Query</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>An optional cursor query object.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>Optional settings.</p>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>stream</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>Return the documents as a stream.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>wideMatch</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>Use Wide-Match strategy.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Array
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last">documents</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchById">
+            
+            <span class="type-signature ">async</span>fetchById<span class="signature">(documentID)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            client.js, line 163
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Fetch one MongoDB document from an ID string.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>documentID</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The <code>_id</code> of the requested document.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last">The document.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchOne">
+            
+            <span class="type-signature ">async</span>fetchOne<span class="signature">(<span class="optional">query</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            client.js, line 200
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Fetch the first MongoDB document from a query.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>An optional cursor query object.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last">The document.</td>
         </tr>
     
     </tbody>
@@ -706,7 +1281,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:40:35 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:44:21 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>

@@ -226,12 +226,6 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="FireFerret.fetch"><a href="FireFerret.html#.fetch">fetch</a></li>
-            
-                <li data-name="FireFerret.fetchById"><a href="FireFerret.html#.fetchById">fetchById</a></li>
-            
-                <li data-name="FireFerret.fetchOne"><a href="FireFerret.html#.fetchOne">fetchOne</a></li>
-            
                 <li data-name="FireFerret#close"><a href="FireFerret.html#close">close</a></li>
             
                 <li data-name="FireFerret#connect"><a href="FireFerret.html#connect">connect</a></li>
@@ -283,7 +277,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Utils.html">Namespace: Utils</h1>
+        <h1 class="page-title" data-filename="Bucket.html">Class: Bucket</h1>
         
 
 
@@ -292,8 +286,10 @@
     
 <header>
     <h2>
-    Utils
+    Bucket
     </h2>
+    
+        <div class="class-description"><p>Creates a new Bucket instance</p></div>
     
 </header>  
 
@@ -303,64 +299,16 @@
     
     
         
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Methods</h3>
-        
-        <dl>
-            
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".filterAvailableWideMatch">
+        <h4 class="name" id="Bucket">
             
-            <span class="type-signature static">static</span>Utils.filterAvailableWideMatch<span class="signature">(cachedQueries, pageOptions)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="global.html#WideMatch">WideMatch</a>|null}</span>
+            new Bucket<span class="signature">(<span class="optional">hash</span>, <span class="optional">elements</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Bucket.html">Bucket</a>}</span>
         </h4>
     
         
         <div class="tag-source">
-            utils.js, line 95
+            bucket.js, line 15
         </div>
         
     </div>
@@ -369,10 +317,6 @@
 </dt>
 <dd>
     
-    
-    <div class="description">
-        <p>Determines if any perviously cached queries can be used to fulfill the current query.</p>
-    </div>
     
 
     
@@ -392,6 +336,8 @@
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -402,183 +348,51 @@
 	
         <tr>
             
-                <td class="name"><code>cachedQueries</code></td>
+                <td class="name"><code>hash</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>The hash value of the Bucket.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>elements</code></td>
             
             
             <td class="type">
             
                 
 <span class="param-type">Array</span>
+|
 
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>A list of previously cached queries.</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>pageOptions</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#PaginationOptions">PaginationOptions</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>Pagination options for the current query, if any.</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="global.html#WideMatch">WideMatch</a>
-                         | 
-                    
-                        null
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id=".validatePaginationOpts">
-            
-            <span class="type-signature static">static</span>Utils.validatePaginationOpts<span class="signature">(options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="global.html#PaginationOptions">PaginationOptions</a>|null}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            utils.js, line 41
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Validates and reformats pagination options.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-            
-            <td class="type">
-            
-                
 <span class="param-type">Object</span>
 
 
@@ -586,10 +400,23 @@
             </td>
             
             
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
             
             <td class="description last">
                 
-                <p>The query options.</p></td>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>Any element(s) to add to the bucket.</p></td>
         </tr>
 	
 	
@@ -650,10 +477,7 @@
             
             <td class="type">
             
-                        <a href="global.html#PaginationOptions">PaginationOptions</a>
-                         | 
-                    
-                        null
+                        <a href="Bucket.html">Bucket</a>
                         
                     
             </td>
@@ -668,7 +492,21 @@
     
 </dd>
 
-        </dl>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -687,7 +525,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:40:35 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:44:21 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>
