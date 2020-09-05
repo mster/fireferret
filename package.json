@@ -13,7 +13,7 @@
   "scripts": {
     "test": "npm run lint && jest",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "jsdoc": "jsdoc ./lib/* README.md -d ./docs",
+    "generate-docs": "jsdoc index.js ./lib/* README.md -d ./jsdoc/docs -c ./jsdoc/jsdoc.json",
     "lint": "echo \"Running Lint...\" && standard ./lib/*.js --verbose && echo \"Lint Successful!\"",
     "lint-fix": "echo \"Using \"standard --fix\"\" && standard ./lib/*.js --fix && echo \"All fixed up!\""
   },
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
+    "jaguarjs-jsdoc": "^1.1.0",
     "jest": "^26.4.2",
     "jsdoc": "^3.6.5",
     "standard": "^14.3.4"

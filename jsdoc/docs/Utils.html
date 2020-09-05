@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FireFerret</title>
+    
+    <meta name="description" content="An asynchronous auto-caching query client for use with MongoDB." />
+    
+        <meta name="keywords" content="node,node.js,mongodb,redis,client,auto-cache" />
+        <meta name="keyword" content="node,node.js,mongodb,redis,client,auto-cache" />
+    
+    
+    
+    <meta property="og:title" content="FireFerret"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="FireFerret API-Documentation"/>
+    <meta property="og:url" content=""/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"FireFerret","openGraph":{"title":"FireFerret","type":"website","image":"","site_name":"FireFerret API-Documentation","url":""},"meta":{"title":"FireFerret","description":"An asynchronous auto-caching query client for use with MongoDB.","keyword":["node","node.js","mongodb","redis","client","auto-cache"]},"linenums":true,"disqus":"","googleAnalytics":"","default":{}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">FireFerret</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="Options">
+            <span class="title">
+                <a href="Options.html">Options</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            <span class="subtitle">Typedefs</span>
+            
+                <li data-name="Options.FireFerretOptions"><a href="Options.html#.FireFerretOptions">FireFerretOptions</a></li>
+            
+                <li data-name="Options.Mongo"><a href="Options.html#.Mongo">Mongo</a></li>
+            
+                <li data-name="Options.QueryOptions"><a href="Options.html#.QueryOptions">QueryOptions</a></li>
+            
+                <li data-name="Options.Redis"><a href="Options.html#.Redis">Redis</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Utils">
+            <span class="title">
+                <a href="Utils.html">Utils</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Utils.filterAvailableWideMatch"><a href="Utils.html#.filterAvailableWideMatch">filterAvailableWideMatch</a></li>
+            
+                <li data-name="Utils.validatePaginationOpts"><a href="Utils.html#.validatePaginationOpts">validatePaginationOpts</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Bucket">
+            <span class="title">
+                <a href="Bucket.html">Bucket</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Cache">
+            <span class="title">
+                <a href="Cache.html">Cache</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Cache#bucketify"><a href="Cache.html#bucketify">bucketify</a></li>
+            
+                <li data-name="Cache#cacheDocuments"><a href="Cache.html#cacheDocuments">cacheDocuments</a></li>
+            
+                <li data-name="Cache#close"><a href="Cache.html#close">close</a></li>
+            
+                <li data-name="Cache#connect"><a href="Cache.html#connect">connect</a></li>
+            
+                <li data-name="Cache#debucketify"><a href="Cache.html#debucketify">debucketify</a></li>
+            
+                <li data-name="Cache#getDocument"><a href="Cache.html#getDocument">getDocument</a></li>
+            
+                <li data-name="Cache#getQueryHash"><a href="Cache.html#getQueryHash">getQueryHash</a></li>
+            
+                <li data-name="Cache#getQueryList"><a href="Cache.html#getQueryList">getQueryList</a></li>
+            
+                <li data-name="Cache#getWideMatch"><a href="Cache.html#getWideMatch">getWideMatch</a></li>
+            
+                <li data-name="Cache#lookupDocuments"><a href="Cache.html#lookupDocuments">lookupDocuments</a></li>
+            
+                <li data-name="Cache#setDocument"><a href="Cache.html#setDocument">setDocument</a></li>
+            
+                <li data-name="Cache#setQueryHash"><a href="Cache.html#setQueryHash">setQueryHash</a></li>
+            
+                <li data-name="Cache#setQueryList"><a href="Cache.html#setQueryList">setQueryList</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="FerretError">
+            <span class="title">
+                <a href="FerretError.html">FerretError</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="FerretError#toString"><a href="FerretError.html#toString">toString</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="FireFerret">
+            <span class="title">
+                <a href="FireFerret.html">FireFerret</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="FireFerret.fetch"><a href="FireFerret.html#.fetch">fetch</a></li>
+            
+                <li data-name="FireFerret.fetchById"><a href="FireFerret.html#.fetchById">fetchById</a></li>
+            
+                <li data-name="FireFerret.fetchOne"><a href="FireFerret.html#.fetchOne">fetchOne</a></li>
+            
+                <li data-name="FireFerret#close"><a href="FireFerret.html#close">close</a></li>
+            
+                <li data-name="FireFerret#connect"><a href="FireFerret.html#connect">connect</a></li>
+            
+                <li data-name="FireFerret#fetch"><a href="FireFerret.html#fetch">fetch</a></li>
+            
+                <li data-name="FireFerret#fetchById"><a href="FireFerret.html#fetchById">fetchById</a></li>
+            
+                <li data-name="FireFerret#fetchOne"><a href="FireFerret.html#fetchOne">fetchOne</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="QueryKey">
+            <span class="title">
+                <a href="QueryKey.html">QueryKey</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="QueryKey#baseKey"><a href="QueryKey.html#baseKey">baseKey</a></li>
+            
+                <li data-name="QueryKey#oneKey"><a href="QueryKey.html#oneKey">oneKey</a></li>
+            
+                <li data-name="QueryKey#queryString"><a href="QueryKey.html#queryString">queryString</a></li>
+            
+                <li data-name="QueryKey#toString"><a href="QueryKey.html#toString">toString</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="Utils.html">Namespace: Utils</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <h2>
+    Utils
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".filterAvailableWideMatch">
+            
+            <span class="type-signature static">static</span>Utils.filterAvailableWideMatch<span class="signature">(cachedQueries, pageOptions)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="global.html#WideMatch">WideMatch</a>|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            utils.js, line 95
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Determines if any perviously cached queries can be used to fulfill the current query.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>cachedQueries</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>A list of previously cached queries.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>pageOptions</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#PaginationOptions">PaginationOptions</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>Pagination options for the current query, if any.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="global.html#WideMatch">WideMatch</a>
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".validatePaginationOpts">
+            
+            <span class="type-signature static">static</span>Utils.validatePaginationOpts<span class="signature">(options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="global.html#PaginationOptions">PaginationOptions</a>|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            utils.js, line 41
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Validates and reformats pagination options.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The query options.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="global.html#PaginationOptions">PaginationOptions</a>
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 16:32:51 GMT-0700 (Pacific Daylight Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/jaguar.js"></script>
+</body>
+</html>
