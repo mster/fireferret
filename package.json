@@ -1,7 +1,7 @@
 {
   "name": "fireferret",
   "version": "0.3.0",
-  "description": "Asynchronous MongoDB document query and caching client for Node.js",
+  "description": "An asynchronous auto-caching query client for MongoDB.",
   "main": "index.js",
   "files": [
     "index.js",
