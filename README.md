@@ -19,13 +19,13 @@ Document query and caching client for Node.js
 
 ## References
 
-| What?             | Where?                                                                     |
-| ----------------- | -------------------------------------------------------------------------- |
-| API-Documentation | [https://mster.github.io/fireferret/](https://mster.github.io/fireferret/) |
-| Config            | https://mster.github.io/fireferret/Options.html#.FireFerretOptions         |
-| Source            | [https://github.com/mster/fireferret](https://github.com/mster/fireferret) |
-| MongoDB           | https://www.mongodb.com/                                                   |
-| Redis             | https://redis.io/                                                          |
+| What?             | Where?                                                                                                                                   |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| API-Documentation | [https://mster.github.io/fireferret/](https://mster.github.io/fireferret/)                                                               |
+| Config            | [https://mster.github.io/fireferret/Options.html#.FireFerretOptions](https://mster.github.io/fireferret/Options.html#.FireFerretOptions) |
+| Source            | [https://github.com/mster/fireferret](https://github.com/mster/fireferret)                                                               |
+| MongoDB           | [https://www.mongodb.com/](https://www.mongodb.com/)                                                                                     |
+| Redis             | [https://redis.io/](https://redis.io/)                                                                                                   |
 
 ## Requirements
 
