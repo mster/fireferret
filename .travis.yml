@@ -4,8 +4,9 @@ node_js:
   - 10
   - 12
   - 14
+
 jobs:
   include:
-    - stage: Produce Coverage
-      node_js: node
-      script: npm run coverage
+    - stage: Generate Coverage
+      node_js: "node"
+      script: npm run generate-coverage
