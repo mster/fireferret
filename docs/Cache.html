@@ -308,7 +308,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 23
+            cache.js, line 30
         </div>
         
     </div>
@@ -492,7 +492,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 118
+            cache.js, line 205
         </div>
         
     </div>
@@ -637,7 +637,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 35
+            cache.js, line 107
         </div>
         
     </div>
@@ -805,7 +805,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 283
+            cache.js, line 81
         </div>
         
     </div>
@@ -905,7 +905,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 274
+            cache.js, line 45
         </div>
         
     </div>
@@ -1005,7 +1005,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 94
+            cache.js, line 181
         </div>
         
     </div>
@@ -1150,7 +1150,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 209
+            cache.js, line 296
         </div>
         
     </div>
@@ -1295,7 +1295,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 185
+            cache.js, line 272
         </div>
         
     </div>
@@ -1463,7 +1463,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 149
+            cache.js, line 236
         </div>
         
     </div>
@@ -1608,7 +1608,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 246
+            cache.js, line 333
         </div>
         
     </div>
@@ -1751,12 +1751,12 @@
     <div class="nameContainer">
         <h4 class="name" id="lookupDocuments">
             
-            <span class="type-signature ">async</span>lookupDocuments<span class="signature">(queryList, <span class="optional">stream</span>, <span class="optional">ndjson</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|Stream}</span>
+            <span class="type-signature ">async</span>lookupDocuments<span class="signature">(queryList, options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|Stream}</span>
         </h4>
     
         
         <div class="tag-source">
-            cache.js, line 69
+            cache.js, line 143
         </div>
         
     </div>
@@ -1788,8 +1788,6 @@
 		<th>Type</th>
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -1813,7 +1811,73 @@
             </td>
             
             
+            
+            <td class="description last">
+                
+                <p>The list of document IDs.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>hydrate</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
                 <td class="default">
+                
+                    false
                 
                 </td>
             
@@ -1821,11 +1885,13 @@
             <td class="description last">
                 
                     
+                        <span class="optional">optional</span>
+                    
                     
                         
                     
                 
-                <p>The list of document IDs.</p></td>
+                <p>JSON.parse documents and attempt to reformat types (performance hit).</p></td>
         </tr>
 	
 	
@@ -1898,6 +1964,12 @@
                     
                 
                 <p>When streaming, use the ndJSON spec.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
         </tr>
 	
 	
@@ -1987,7 +2059,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 223
+            cache.js, line 310
         </div>
         
     </div>
@@ -2158,7 +2230,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 197
+            cache.js, line 284
         </div>
         
     </div>
@@ -2338,7 +2410,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 173
+            cache.js, line 260
         </div>
         
     </div>
@@ -2514,7 +2586,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 19:59:49 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 08 2020 00:54:05 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>

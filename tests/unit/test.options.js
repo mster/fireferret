@@ -1,85 +1,85 @@
-"use strict";
+'use strict'
 
 /* eslint-env jest */
 
-const { generateOptions } = require("../../lib/options");
+const { generateOptions } = require('../../lib/options')
 
-describe("Options", () => {
-  test("generateOptions retains mongo defaults", function () {
+describe('Options', () => {
+  test('generateOptions retains mongo defaults', function () {
     const acutal = generateOptions(
       {
-        dbName: "Åkerfeldt",
-        collectionName: "Mikael",
+        dbName: 'Åkerfeldt',
+        collectionName: 'Mikael'
       },
-      "mongo"
-    );
+      'mongo'
+    )
 
     const expected = {
-      dbName: "Åkerfeldt",
-      collectionName: "Mikael",
-      encoding: "utf-8",
+      dbName: 'Åkerfeldt',
+      collectionName: 'Mikael',
+      encoding: 'utf-8',
       ndJSON: false,
-      uri: "",
-    };
+      uri: ''
+    }
 
-    expect(expected).toEqual(acutal);
-  });
+    expect(expected).toEqual(acutal)
+  })
 
-  test("generateOptions does not add default values when using false flag", function () {
+  test('generateOptions does not add default values when using false flag', function () {
     const acutal = generateOptions(
       {
-        dbName: "Åkerfeldt",
-        collectionName: "Mikael",
+        dbName: 'Åkerfeldt',
+        collectionName: 'Mikael'
       },
-      "mongo",
+      'mongo',
       false
-    );
+    )
 
     const expected = {
-      dbName: "Åkerfeldt",
-      collectionName: "Mikael",
-    };
+      dbName: 'Åkerfeldt',
+      collectionName: 'Mikael'
+    }
 
-    expect(expected).toEqual(acutal);
-  });
+    expect(expected).toEqual(acutal)
+  })
 
-  test("generateOptions removes unsupported options", function () {
+  test('generateOptions removes unsupported options', function () {
     const acutal = generateOptions(
       {
-        kids: "bop 2020",
-        featuring: "SoujaBoy",
-        andHis: "Brand new gaming console",
+        kids: 'bop 2020',
+        featuring: 'SoujaBoy',
+        andHis: 'Brand new gaming console'
       },
-      "mongo"
-    );
+      'mongo'
+    )
 
     const expected = {
-      dbName: "",
-      collectionName: "",
-      encoding: "utf-8",
+      dbName: '',
+      collectionName: '',
+      encoding: 'utf-8',
       ndJSON: false,
-      uri: "",
-    };
+      uri: ''
+    }
 
-    expect(expected).toEqual(acutal);
-  });
+    expect(expected).toEqual(acutal)
+  })
 
-  test("generateOptions removes unsupported options", function () {
+  test('generateOptions removes unsupported options', function () {
     const acutal = generateOptions(
       {
-        host: "redis.red.is",
+        host: 'redis.red.is',
         port: 6379,
-        auth_pass: "foobarfoobarfoobar",
+        auth_pass: 'foobarfoobarfoobar'
       },
-      "redisClient"
-    );
+      'redisClient'
+    )
 
     const expected = {
       ndJSON: false,
       count: 1000,
       connectionTimeout: 5000,
       batchSize: 1000,
-      host: "redis.red.is",
+      host: 'redis.red.is',
       port: 6379,
       return_buffers: false,
       detect_buffers: false,
@@ -88,10 +88,10 @@ describe("Options", () => {
       no_ready_check: false,
       enable_offline_queue: true,
       retry_unfilfilled_commands: false,
-      auth_pass: "foobarfoobarfoobar",
-      family: "IPv4",
-    };
+      auth_pass: 'foobarfoobarfoobar',
+      family: 'IPv4'
+    }
 
-    expect(expected).toEqual(acutal);
-  });
-});
+    expect(expected).toEqual(acutal)
+  })
+})
