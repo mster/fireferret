@@ -2,11 +2,15 @@
 
 /* eslint-env jest */
 
+/*
+  Functional Testing:
+  FireFerret's Fetch functionality
+*/
+
 const { PassThrough } = require("stream");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const { createClient } = require("redis-mock");
 const FireFerret = require("../../lib/client");
-const fireferret = require("../..");
 
 /* using default docs scheme from https://www.npmjs.com/package/socuments */
 const printer = require("socuments");
@@ -19,7 +23,7 @@ let docs;
 let ids;
 
 beforeAll(async (done) => {
-  jest.setTimeout(1200000);
+  jest.setTimeout(120000);
 
   redis = createClient();
   mongoServer = new MongoMemoryServer();

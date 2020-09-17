@@ -152,8 +152,6 @@
             
                 <li data-name="Cache#bucketify"><a href="Cache.html#bucketify">bucketify</a></li>
             
-                <li data-name="Cache#cacheDocuments"><a href="Cache.html#cacheDocuments">cacheDocuments</a></li>
-            
                 <li data-name="Cache#close"><a href="Cache.html#close">close</a></li>
             
                 <li data-name="Cache#connect"><a href="Cache.html#connect">connect</a></li>
@@ -162,15 +160,17 @@
             
                 <li data-name="Cache#getDocument"><a href="Cache.html#getDocument">getDocument</a></li>
             
+                <li data-name="Cache#getDocuments"><a href="Cache.html#getDocuments">getDocuments</a></li>
+            
                 <li data-name="Cache#getQueryHash"><a href="Cache.html#getQueryHash">getQueryHash</a></li>
             
                 <li data-name="Cache#getQueryList"><a href="Cache.html#getQueryList">getQueryList</a></li>
             
                 <li data-name="Cache#getWideMatch"><a href="Cache.html#getWideMatch">getWideMatch</a></li>
             
-                <li data-name="Cache#lookupDocuments"><a href="Cache.html#lookupDocuments">lookupDocuments</a></li>
-            
                 <li data-name="Cache#setDocument"><a href="Cache.html#setDocument">setDocument</a></li>
+            
+                <li data-name="Cache#setDocuments"><a href="Cache.html#setDocuments">setDocuments</a></li>
             
                 <li data-name="Cache#setQueryHash"><a href="Cache.html#setQueryHash">setQueryHash</a></li>
             
@@ -492,7 +492,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 205
+            cache.js, line 207
         </div>
         
     </div>
@@ -612,174 +612,6 @@
             <td class="type">
             
                         Object
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="cacheDocuments">
-            
-            <span class="type-signature ">async</span>cacheDocuments<span class="signature">(queryKey, documents)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{void}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            cache.js, line 107
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sets the queryList and caches documents into Redis.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>queryKey</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="QueryKey.html">QueryKey</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>The QueryKey to use when caching.</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>documents</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>The documents to cache (from MongoDB).</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        void
                         
                     
             </td>
@@ -1005,7 +837,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 181
+            cache.js, line 183
         </div>
         
     </div>
@@ -1150,7 +982,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 296
+            cache.js, line 298
         </div>
         
     </div>
@@ -1288,470 +1120,9 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="getQueryHash">
+        <h4 class="name" id="getDocuments">
             
-            <span class="type-signature ">async</span>getQueryHash<span class="signature">(queryHash, query)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{String}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            cache.js, line 272
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the document ID associated with a particular query</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>queryHash</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>The hash name version of a query.</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>query</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>The query to retreive.</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        String
-                        
-                    
-            </td>
-            <td class="description last">The document ID.</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getQueryList">
-            
-            <span class="type-signature ">async</span>getQueryList<span class="signature">(queryKey)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="global.html#QueryMatch">QueryMatch</a>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            cache.js, line 236
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the queryList associated with the provided QueryKey</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>queryKey</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="QueryKey.html">QueryKey</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>The QueryKey</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="global.html#QueryMatch">QueryMatch</a>
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getWideMatch">
-            
-            <span class="type-signature ">async</span>getWideMatch<span class="signature">(queryKey)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|null}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            cache.js, line 333
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Attempts to find a previously cached query that contains our requested data.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>queryKey</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="QueryKey.html">QueryKey</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>The QueryKey.</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Array
-                         | 
-                    
-                        null
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="lookupDocuments">
-            
-            <span class="type-signature ">async</span>lookupDocuments<span class="signature">(queryList, options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|Stream}</span>
+            <span class="type-signature ">async</span>getDocuments<span class="signature">(queryList, <span class="optional">options</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|Stream}</span>
         </h4>
     
         
@@ -1788,6 +1159,8 @@
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -1811,8 +1184,17 @@
             </td>
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last">
+                
+                    
+                    
+                        
+                    
                 
                 <p>The list of document IDs.</p></td>
         </tr>
@@ -1834,8 +1216,21 @@
             </td>
             
             
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
             
             <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
                 
                 
                 
@@ -2052,6 +1447,467 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="getQueryHash">
+            
+            <span class="type-signature ">async</span>getQueryHash<span class="signature">(queryHash, query)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{String}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            cache.js, line 274
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the document ID associated with a particular query</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>queryHash</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The hash name version of a query.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The query to retreive.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            <td class="description last">The document ID.</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getQueryList">
+            
+            <span class="type-signature ">async</span>getQueryList<span class="signature">(queryKey)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="global.html#QueryMatch">QueryMatch</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            cache.js, line 238
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the queryList associated with the provided QueryKey</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>queryKey</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="QueryKey.html">QueryKey</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The QueryKey</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="global.html#QueryMatch">QueryMatch</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getWideMatch">
+            
+            <span class="type-signature ">async</span>getWideMatch<span class="signature">(queryKey)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array|null}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            cache.js, line 335
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Attempts to find a previously cached query that contains our requested data.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>queryKey</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="QueryKey.html">QueryKey</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The QueryKey.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Array
+                         | 
+                    
+                        null
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="setDocument">
             
             <span class="type-signature ">async</span>setDocument<span class="signature">(document, requestedID)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{void}</span>
@@ -2059,7 +1915,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 310
+            cache.js, line 312
         </div>
         
     </div>
@@ -2223,6 +2079,174 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="setDocuments">
+            
+            <span class="type-signature ">async</span>setDocuments<span class="signature">(queryKey, documents)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{void}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            cache.js, line 107
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the queryList and caches documents into Redis.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>queryKey</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="QueryKey.html">QueryKey</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The QueryKey to use when caching.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>documents</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>The documents to cache (from MongoDB).</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        void
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="setQueryHash">
             
             <span class="type-signature ">async</span>setQueryHash<span class="signature">(queryHash, args)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{void}</span>
@@ -2230,7 +2254,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 284
+            cache.js, line 286
         </div>
         
     </div>
@@ -2410,7 +2434,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 260
+            cache.js, line 262
         </div>
         
     </div>
@@ -2586,7 +2610,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 08 2020 00:54:05 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 17 2020 19:51:14 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>
