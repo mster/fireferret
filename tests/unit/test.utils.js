@@ -1,12 +1,12 @@
 'use strict'
 
 /* eslint-env jest */
-
+const { ObjectID } = require('mongodb')
 const {
-  SYMBOLS,
   validatePaginationOpts,
   filterAvailableWideMatch,
-  fastReverse
+  fastReverse,
+  hydrate
 } = require('../../lib/utils')
 
 describe('Utils', () => {
@@ -158,5 +158,16 @@ describe('Utils', () => {
       const c = null
       fastReverse(c)
     }).toThrow()
+  })
+
+  test('hydrate should coerce types', () => {
+    const expected = {
+      date: new Date(),
+      _id: new ObjectID()
+    }
+    const raw = JSON.stringify(expected)
+
+    const acutal = hydrate(raw)
+    expect(acutal).toEqual(expected)
   })
 })
