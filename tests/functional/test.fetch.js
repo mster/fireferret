@@ -37,7 +37,7 @@ beforeAll(async (done) => {
   ferret.cache.setClient(redis)
   await ferret.connect()
 
-  docs = printer(20)
+  docs = printer(1000)
 
   const mongo = ferret.mongo.getClient()
   const { insertedIds } = await mongo
@@ -62,9 +62,13 @@ describe('fetch', function () {
     const queryOptions = { hydrate: true }
 
     const expected = deepClone(docs)
+
     const firstRequest = await ferret.fetch(query, queryOptions)
+    expect(firstRequest.length).toEqual(expected.length)
     expect(firstRequest).toEqual(expected)
+
     const secondRequest = await ferret.fetch(query, queryOptions)
+    expect(secondRequest.length).toEqual(expected.length)
     expect(secondRequest).toEqual(expected)
 
     done()
@@ -100,15 +104,17 @@ describe('fetch', function () {
     done()
   })
 
-  it('should obey pagination rules', async function (done) {
+  it('should obey pagination rules with size of 1', async function (done) {
     const query = {}
     const queryOptions = { hydrate: true, pagination: { page: 1, size: 1 } }
 
     const expected = deepClone(docs).slice(0, 1)
 
     const firstRequest = await ferret.fetch(query, queryOptions)
+    expect(expected.length).toEqual(firstRequest.length)
     expect(firstRequest).toEqual(expected)
     const secondRequest = await ferret.fetch(query, queryOptions)
+    expect(expected.length).toEqual(secondRequest.length)
     expect(secondRequest).toEqual(expected)
 
     done()
@@ -116,13 +122,18 @@ describe('fetch', function () {
 
   it('should obey pagination rules', async function (done) {
     const query = {}
-    const queryOptions = { hydrate: true, pagination: { page: 1, size: 5 } }
+    const queryOptions = {
+      hydrate: true,
+      pagination: { page: 1, size: Math.floor(docs.length / 2) }
+    }
 
-    const expected = deepClone(docs).slice(0, 5)
+    const expected = deepClone(docs).slice(0, Math.floor(docs.length / 2))
 
     const firstRequest = await ferret.fetch(query, queryOptions)
+    expect(expected.length).toEqual(firstRequest.length)
     expect(firstRequest).toEqual(expected)
     const secondRequest = await ferret.fetch(query, queryOptions)
+    expect(expected.length).toEqual(secondRequest.length)
     expect(secondRequest).toEqual(expected)
 
     done()
