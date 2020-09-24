@@ -3,7 +3,7 @@
 /* eslint-env jest */
 
 /*
-  Functional Testing:
+  Integration Testing:
   FireFerret's Cache (Redis Wrapper)
 */
 
@@ -71,7 +71,7 @@ describe('getDocuments/setDocuments', function () {
 
     /* get docs */
     const expectedDocs = JSON.parse(JSON.stringify(docs))
-    const actualDocs = await cache.getDocuments(queryList)
+    const actualDocs = await cache.getDocuments(queryList, queryKey)
     expect(actualDocs).toEqual(expectedDocs)
 
     /* get queryList */
@@ -96,7 +96,9 @@ describe('getDocuments/setDocuments', function () {
 
     /* get docs */
     const expectedDocs = deepClone(docs)
-    const actualDocs = await cache.getDocuments(queryList, { hydrate: true })
+    const actualDocs = await cache.getDocuments(queryList, queryKey, {
+      hydrate: true
+    })
     expect(actualDocs).toEqual(expectedDocs)
 
     /* get queryList */
@@ -113,11 +115,17 @@ describe('getDocuments/setDocuments', function () {
   })
 
   it('should return a stream when using options.stream', async function (done) {
+    const queryKey = new QueryKey(
+      ferret.mongo.dbName,
+      ferret.mongo.collectionName
+    )
     const queryList = deepClone(docs).map((e) => e._id)
 
     /* get docs */
     const expected = JSON.parse(JSON.stringify(docs))
-    const source = await cache.getDocuments(queryList, { stream: true })
+    const source = await cache.getDocuments(queryList, queryKey, {
+      stream: true
+    })
     expect(source.constructor).toBe(PassThrough)
 
     let chunks = ''

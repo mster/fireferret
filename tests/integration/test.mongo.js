@@ -11,6 +11,7 @@ const { PassThrough } = require('stream')
 const { MongoMemoryServer } = require('mongodb-memory-server')
 const { createClient } = require('redis-mock')
 const FireFerret = require('../../lib/client')
+const { QueryKey } = require('../../lib/key')
 
 /* using default docs scheme from https://www.npmjs.com/package/mockuments */
 const printer = require('mockuments')
@@ -61,10 +62,15 @@ afterAll(async (done) => {
 
 describe('findDocs', function () {
   it('should fetch documents from a database.', async function (done) {
-    const query = undefined
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      undefined,
+      undefined
+    )
     const queryOptions = undefined
 
-    const actual = await mongoWrapper.findDocs(query, queryOptions)
+    const actual = await mongoWrapper.findDocs(queryKey, queryOptions)
     const expected = deepClone(docs)
 
     expect(actual).not.toBe(undefined)
@@ -74,10 +80,15 @@ describe('findDocs', function () {
   })
 
   it('should fetch documents from a database that matches the given query.', async function (done) {
-    const query = { 'contact.onEarth': true }
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      { 'contact.onEarth': true },
+      undefined
+    )
     const queryOptions = undefined
 
-    const actual = await mongoWrapper.findDocs(query, queryOptions)
+    const actual = await mongoWrapper.findDocs(queryKey, queryOptions)
     const expected = deepClone(docs).filter((v) => v.contact.onEarth === true)
 
     expect(actual).not.toBe(undefined)
@@ -87,10 +98,15 @@ describe('findDocs', function () {
   })
 
   it('should fetch documents from a database that obey pagination rules.', async function (done) {
-    const query = {}
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      undefined,
+      undefined
+    )
     const queryOptions = { skip: 0, limit: 10 }
 
-    const actual = await mongoWrapper.findDocs(query, queryOptions)
+    const actual = await mongoWrapper.findDocs(queryKey, queryOptions)
     const expected = deepClone(docs).slice(0, 10)
 
     expect(actual).not.toBe(undefined)
@@ -100,10 +116,15 @@ describe('findDocs', function () {
   })
 
   it('should fetch no documents from a database with an unmatchable query.', async function (done) {
-    const query = { badQuery: 666 } // we know this doesn't exist in the sample docs
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      { badQuery: 666 }, // we know this doesn't exist in the sample docs
+      undefined
+    )
     const queryOptions = undefined
 
-    const actual = await mongoWrapper.findDocs(query, queryOptions)
+    const actual = await mongoWrapper.findDocs(queryKey, queryOptions)
     const expected = []
 
     expect(actual).not.toBe(undefined)
@@ -115,14 +136,19 @@ describe('findDocs', function () {
 
 describe('findDocsStream', function () {
   it('should fetch a stream of documents from a database.', async function (done) {
-    const query = undefined
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      undefined,
+      undefined
+    )
     const queryOptions = undefined
 
     const expected = JSON.parse(JSON.stringify(docs))
     const expectedCapture = deepClone(docs)
 
     const { sink: source, capture } = await mongoWrapper.findDocsStream(
-      query,
+      queryKey,
       queryOptions
     )
 
@@ -142,14 +168,19 @@ describe('findDocsStream', function () {
   })
 
   it('should fetch a stream without documents when using an unmatchable query.', async function (done) {
-    const query = { badQuery: 666 } // we know this doesn't exist in the sample docs
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      { badQuery: 666 }, // we know this doesn't exist in the sample docs
+      undefined
+    )
     const queryOptions = undefined
 
     const expected = []
     const expectedCapture = []
 
     const { sink: source, capture } = await mongoWrapper.findDocsStream(
-      query,
+      queryKey,
       queryOptions
     )
 
@@ -171,9 +202,14 @@ describe('findDocsStream', function () {
 
 describe('findOne', function () {
   it('should fetch documents from a database.', async function (done) {
-    const query = undefined
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      undefined,
+      undefined
+    )
 
-    const actual = await mongoWrapper.findOne(query)
+    const actual = await mongoWrapper.findOne(queryKey)
     const expected = deepClone(docs)[0]
 
     expect(actual).not.toBe(undefined)
@@ -183,9 +219,14 @@ describe('findOne', function () {
   })
 
   it('should fetch documents from a database.', async function (done) {
-    const query = { 'contact.onEarth': true }
+    const queryKey = new QueryKey(
+      mongoWrapper.dbName,
+      mongoWrapper.collectionName,
+      { 'contact.onEarth': true },
+      undefined
+    )
 
-    const actual = await mongoWrapper.findOne(query)
+    const actual = await mongoWrapper.findOne(queryKey)
     const expected = deepClone(docs).filter(
       (v) => v.contact.onEarth === true
     )[0]
