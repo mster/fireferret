@@ -56,7 +56,7 @@ afterAll(async (done) => {
   done()
 })
 
-describe('get/set documents', function () {
+describe('getDocuments/setDocuments', function () {
   it('should cache a QueryList as well as the corresponding documents.', async function (done) {
     const queryKey = new QueryKey(
       ferret.mongo.dbName,
@@ -127,5 +127,29 @@ describe('get/set documents', function () {
       expect(actual).toEqual(expected)
       done()
     })
+  })
+})
+
+describe('getQueryHash/setQueryHash', function () {
+  it('should set then get a key/value pair in the given hash.', async function (done) {
+    const queryKey = new QueryKey(
+      ferret.mongo.dbName,
+      ferret.mongo.collectionName
+    )
+
+    const expected = deepClone(docs)[0]._id.toHexString()
+
+    await cache.setQueryHash(
+      queryKey.oneKey(),
+      queryKey.queryString(),
+      expected
+    )
+
+    const actual = await cache.getQueryHash(
+      queryKey.oneKey(),
+      queryKey.queryString()
+    )
+    expect(actual).toEqual(expected)
+    done()
   })
 })
