@@ -3,7 +3,7 @@
 /* eslint-env jest */
 
 /*
-  Functional Testing:
+  Integration Testing:
   FireFerret's MongoDB Wrapper
 */
 
@@ -12,7 +12,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server')
 const { createClient } = require('redis-mock')
 const FireFerret = require('../../lib/client')
 
-/* using default docs scheme from https://www.npmjs.com/package/socuments */
+/* using default docs scheme from https://www.npmjs.com/package/mockuments */
 const printer = require('mockuments')
 const deepClone = require('clone-deep')
 
