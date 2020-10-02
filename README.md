@@ -1,14 +1,8 @@
-## Hello there!
-
-### Thank you for checking out FireFerret!
-
-Currently (as of `v0.0.2`), FireFerret is unstable and deemed experiment. Please **AVOID** using this package in production until a stable version is released.
-
-Stable releases will be designated by versions greater than `1.0.0` and are planned for September 2020.
+![Logo](https://user-images.githubusercontent.com/15038724/94977866-9e915c80-04cf-11eb-9f4f-fd3bcf5c8a54.png)
 
 # FireFerret
 
-Document query and caching client for Node.js
+Autocaching query client for MongoDB, with powerful filtering functionality.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ "JavaScript Standard Style")
@@ -29,18 +23,25 @@ Document query and caching client for Node.js
 
 ## Requirements
 
-FireFerret requires MongoDB and Redis instances. These may be local or remote, Ferret don't give-a-hoot!
+FireFerret requires MongoDB and Redis instances.
 
 ## Usage
+
+```js
+const FireFerret = require("fireferret");
+
+const ferret = new FireFerret({
+  mongo: { uri: "...", collectionName: "..." },
+  redis: { host: "...", port: 6379, auth_pass: "..." },
+});
+
+await ferret.connect();
+const docs = await ferret.fetch({ "some.field": /.*/ });
+```
 
 Query some documents using pagination.
 
 ```js
-const FireFerret = require("FireFerret");
-
-const ferret = new FireFerret(options);
-await ferret.connect();
-
 const docs = await ferret.fetch(
   { genre: { $in: ["Djent", "Math Metal"] } },
   { pagination: { page: 3, size: 20 } }
@@ -50,15 +51,16 @@ const docs = await ferret.fetch(
 FireFerret supports streaming queries.
 
 ```js
-const awesomePackages = await ferret.fetch({ author: "nw" }, { stream: true });
-
-awesomePackages.pipe(res);
+await ferret.fetch({ isOpen: true }, { stream: true }).pipe(res);
 ```
 
 Using the Wide-Match strategy.
 
 ```js
-const smartFerret = new FireFerret({ /* ... ,*/ wideMatch: true });
+const smartFerret = new FireFerret({
+  /* ... ,*/
+  wideMatch: true,
+});
 await smartFerret.connect();
 
 const query = { candidates: { $ne: "Drumpf", $exists: true } };
@@ -73,15 +75,15 @@ const first20docs = await smartFerret.fetch(query, {
   pagination: { page: 1, size: 20 },
 });
 
-/* anotha one, cache hit */
+/* cache hit */
 const first10docs = await smartFerret.fetch(query, {
   pagination: { page: 1, size: 10 },
 });
 
-/* anotha one, cache hit */
+/* cache hit */
 const firstDoc = await smartFerret.fetchOne(query);
 ```
 
 ## Contributing
 
-We welcome you with open arms. Contributions are appreciate after `v1.0.0`
+We welcome you with open arms. Contributions are appreciated after `v1.0.0`
