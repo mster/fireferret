@@ -36,7 +36,7 @@ beforeAll(async (done) => {
     redis: {}
   }
   ferret = new FireFerret(opts)
-  ferret.cache.setClient(redis)
+  ferret.cache._setClient(redis)
   await ferret.connect()
 
   docs = printer(20)

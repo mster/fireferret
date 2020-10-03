@@ -150,6 +150,10 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Cache#_getClient"><a href="Cache.html#_getClient">_getClient</a></li>
+            
+                <li data-name="Cache#_setClient"><a href="Cache.html#_setClient">_setClient</a></li>
+            
                 <li data-name="Cache#bucketify"><a href="Cache.html#bucketify">bucketify</a></li>
             
                 <li data-name="Cache#close"><a href="Cache.html#close">close</a></li>
@@ -485,6 +489,202 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="_getClient">
+            
+            _getClient<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            cache.js, line 48
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Internal - Using this may induce unintended behaviors.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+
+An npm::redis client.
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="_setClient">
+            
+            _setClient<span class="signature">(client)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            cache.js, line 40
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Internal - Using this may induce unintended behaviors.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">RedisClient</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>An npm::redis client that has already been connected.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="bucketify">
             
             bucketify<span class="signature">(documents)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
@@ -492,7 +692,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 309
+            cache.js, line 319
         </div>
         
     </div>
@@ -637,7 +837,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 81
+            cache.js, line 91
         </div>
         
     </div>
@@ -732,12 +932,12 @@
     <div class="nameContainer">
         <h4 class="name" id="connect">
             
-            <span class="type-signature ">async</span>connect<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{void}</span>
+            <span class="type-signature ">async</span>connect<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
         </h4>
     
         
         <div class="tag-source">
-            cache.js, line 45
+            cache.js, line 56
         </div>
         
     </div>
@@ -811,11 +1011,11 @@
             
             <td class="type">
             
-                        void
+                        Promise
                         
                     
             </td>
-            <td class="description last"></td>
+            <td class="description last">Resolves</td>
         </tr>
     
     </tbody>
@@ -837,7 +1037,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 336
+            cache.js, line 346
         </div>
         
     </div>
@@ -982,7 +1182,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 175
+            cache.js, line 185
         </div>
         
     </div>
@@ -1127,7 +1327,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 114
+            cache.js, line 124
         </div>
         
     </div>
@@ -1454,7 +1654,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 253
+            cache.js, line 263
         </div>
         
     </div>
@@ -1622,7 +1822,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 217
+            cache.js, line 227
         </div>
         
     </div>
@@ -1767,7 +1967,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 277
+            cache.js, line 287
         </div>
         
     </div>
@@ -1915,7 +2115,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 189
+            cache.js, line 199
         </div>
         
     </div>
@@ -2086,7 +2286,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 143
+            cache.js, line 153
         </div>
         
     </div>
@@ -2254,7 +2454,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 265
+            cache.js, line 275
         </div>
         
     </div>
@@ -2434,7 +2634,7 @@
     
         
         <div class="tag-source">
-            cache.js, line 241
+            cache.js, line 251
         </div>
         
     </div>
@@ -2610,7 +2810,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 24 2020 16:26:38 GMT-0700 (Pacific Daylight Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Fri Oct 02 2020 17:14:14 GMT-0700 (Pacific Daylight Time)
         </footer>
     </div>
 </div>

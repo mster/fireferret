@@ -38,10 +38,10 @@ beforeAll(async (done) => {
     redis: {}
   }
   ferret = new FireFerret(opts)
-  ferret.cache.setClient(redis)
+  ferret.cache._setClient(redis)
   await ferret.connect()
 
-  const mongo = ferret.mongo.getClient()
+  const mongo = ferret.mongo._getClient()
   const { insertedIds: batchOneIds } = await mongo
     .db()
     .collection(collections.one.name)

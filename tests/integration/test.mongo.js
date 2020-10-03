@@ -36,12 +36,12 @@ beforeAll(async (done) => {
     redis: {}
   }
   ferret = new FireFerret(opts)
-  ferret.cache.setClient(redis)
+  ferret.cache._setClient(redis)
   await ferret.connect()
 
   docs = printer(20)
 
-  const mongo = ferret.mongo.getClient()
+  const mongo = ferret.mongo._getClient()
   const { insertedIds } = await mongo
     .db()
     .collection(opts.mongo.collectionName)
