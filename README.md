@@ -4,6 +4,8 @@
 
 Autocaching query client for MongoDB, with powerful filtering functionality.
 
+_We care about response times!_
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide: Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/ "JavaScript Standard Style")
 [![Build Status](https://travis-ci.com/mster/fireferret.svg?branch=master)](https://travis-ci.com/mster/fireferret)
@@ -16,8 +18,8 @@ Autocaching query client for MongoDB, with powerful filtering functionality.
 | What?             | Where?                                                                                                                                   |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | API-Documentation | [https://mster.github.io/fireferret/](https://mster.github.io/fireferret/)                                                               |
-| Config            | [https://mster.github.io/fireferret/Options.html#.FireFerretOptions](https://mster.github.io/fireferret/Options.html#.FireFerretOptions) |
-| Source            | [https://github.com/mster/fireferret](https://github.com/mster/fireferret)                                                               |
+| Client Config     | [https://mster.github.io/fireferret/Options.html#.FireFerretOptions](https://mster.github.io/fireferret/Options.html#.FireFerretOptions) |
+| Source code       | [https://github.com/mster/fireferret](https://github.com/mster/fireferret)                                                               |
 | MongoDB           | [https://www.mongodb.com/](https://www.mongodb.com/)                                                                                     |
 | Redis             | [https://redis.io/](https://redis.io/)                                                                                                   |
 
@@ -87,3 +89,5 @@ const firstDoc = await smartFerret.fetchOne(query);
 ## Contributing
 
 We welcome you with open arms. Contributions are appreciated after `v1.0.0`
+
+- Huge thanks to [Andrew Richtmyer](https://www.etsy.com/people/1bthcucr) for creating the FireFerret 'Pabu' artwork.
