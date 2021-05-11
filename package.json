@@ -1,6 +1,6 @@
 {
   "name": "fireferret",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Autocaching query client for MongoDB, with powerful filtering functionality.",
   "main": "index.js",
   "files": [
@@ -37,7 +37,7 @@
     "matflap": "^0.0.3",
     "mongodb": "^3.5.9",
     "pump": "^3.0.0",
-    "redis": "^3.0.2",
+    "redis": "^3.1.2",
     "sliced": "^1.0.1",
     "through2": "^4.0.2"
   },
