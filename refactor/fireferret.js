@@ -228,7 +228,9 @@ class FireFerretClient {
       // partial fulfillment is worthless, reload entire query from DB
       if (partialFulfillment) return loadFromDB()
 
+      this.cache.set(qK, loadOp)
       log('🔥🧙 Found cached match!')
+
       return docs
     }
 
@@ -254,20 +256,29 @@ class FireFerretClient {
 
         if (!kColl || !kQ) continue // is not a query key
 
+        // entire set was cached previous, we can get a subset from this easily
+        if (kDb === this.activeDb && kColl === this.activeCollection && kQ === strQ && !kR) {
+          match = key
+          matchDiff = [low, high]
+
+          break
+        }
+
         const [kLow, kHigh] = kR.split('-')
         if (
           kDb === this.activeDb &&
-                    kColl === (collectionName || this.activeCollection) &&
-                    kQ === strQ &&
-                    low >= kLow &&
-                    high <= kHigh &&
-                    (low - kLow < matchDiff[0] && kHigh - high < matchDiff[1])
+          kColl === (collectionName || this.activeCollection) && kQ === strQ &&
+          low >= kLow &&
+          high <= kHigh &&
+          (low - kLow < matchDiff[0] && kHigh - high < matchDiff[1])
         ) {
           match = key
           matchDiff = [(low - kLow), (kHigh - high)]
         }
       }
     }
+
+    log(`Match? ${match}`)
 
     // no match found; read-through to DB.
     if (!match) return loadFromDB()
