@@ -15,68 +15,52 @@ _Node.js Read-through cache for MongoDB_.
 | MongoDB           | [https://www.mongodb.com/](https://www.mongodb.com/)                                                                                     |
 | Redis             | [https://redis.io/](https://redis.io/)                                                                                                   |
 
-## Requirements
-
-FireFerret requires MongoDB and Redis instances.
 
 ## Usage
 
-```js
-const FireFerret = require("fireferret");
+Configure a FireFerret client by suppling a datastore and MongoDB connection information. 
 
-const ferret = new FireFerret({
-  mongo: { uri: "...", collectionName: "..." },
-  redis: { host: "...", port: 6379, auth_pass: "..." },
-});
+To learn how to configure a datastore, see the [Datastores](#Datastores) section.
+
+```js
+const FireFerretClient = require("fireferret");
+
+const cacheConfig = {
+  store: require('cache-manager-redis-store'),
+  host: 'localhost',
+  port: 6379,
+  ...
+}
+
+const ferret = new FireFerretClient({
+  uri: "mongodb://endpoint:27017/?compressors=zlib",
+  collection: "DefaultCollection",
+  ...cacheConfig
+})
 
 await ferret.connect();
+
 const docs = await ferret.fetch({ "some.field": /.*/ });
 ```
 
 Query some documents using pagination.
 
 ```js
-const docs = await ferret.fetch(
-  { genre: { $in: ["Djent", "Math Metal"] } },
-  { pagination: { page: 3, size: 20 } }
+const query = { genre: { $in: ["Djent", "Tech Death"] } };
+
+const pageOne = await ferret.fetch(
+  query,
+  { pg: [1, 20] }
+);
+
+const pageTwo = await ferret.fetch(
+  query,
+  { pg: [2, 20] }
 );
 ```
 
-FireFerret supports streaming queries.
+## Datastores
 
-```js
-await ferret.fetch({ isOpen: true }, { stream: true }).pipe(res);
-```
-
-Using the Wide-Match strategy.
-
-```js
-const smartFerret = new FireFerret({
-  /* ... ,*/
-  wideMatch: true,
-});
-await smartFerret.connect();
-
-const query = { candidates: { $ne: "Drumpf", $exists: true } };
-
-/* cache miss */
-const first50docs = await smartFerret.fetch(query, {
-  pagination: { page: 1, size: 50 },
-});
-
-/* cache hit */
-const first20docs = await smartFerret.fetch(query, {
-  pagination: { page: 1, size: 20 },
-});
-
-/* cache hit */
-const first10docs = await smartFerret.fetch(query, {
-  pagination: { page: 1, size: 10 },
-});
-
-/* cache hit */
-const firstDoc = await smartFerret.fetchOne(query);
-```
 
 ## Contributing
 
