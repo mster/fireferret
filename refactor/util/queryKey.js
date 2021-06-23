@@ -1,12 +1,13 @@
 'use strict'
 
-const btoa = require('btoa')
+module.exports = function queryKey (dbName, collName, query = {}, range) {
+  if (!dbName || !collName) throw new Error('dbName and collName are required!')
 
-module.exports = function queryKey(dbName, collName, query={}, range) {
-    if (!dbName || !collName) throw new Error('dbName and collName are required!')
+  const strQ = JSON.stringify(query)
 
-    const strQ = JSON.stringify(query)
-    const formattedRange = range ? `${range[0]}-${range[1]}` : ``
-    const raw = `${dbName}:${collName}:${strQ}:${formattedRange}`
-    return raw
+  const [low, high] = range
+  const formattedRange = low && high ? `${low}-${high}` : ''
+
+  const raw = `${dbName}::${collName}::${strQ}::${formattedRange}`
+  return raw
 }
