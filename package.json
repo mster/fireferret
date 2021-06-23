@@ -1,6 +1,6 @@
 {
   "name": "fireferret",
-  "version": "0.4.4",
+  "version": "1.0.0-rc0",
   "description": "Autocaching query client for MongoDB, with powerful filtering functionality.",
   "main": "index.js",
   "files": [
@@ -34,6 +34,7 @@
     "testRegex": "./tests/.*/test..*.js$"
   },
   "dependencies": {
+    "cache-manager": "^3.4.4",
     "matflap": "^0.0.3",
     "mongodb": "^3.5.9",
     "pump": "^3.0.0",
@@ -46,7 +47,7 @@
     "coveralls": "^3.1.0",
     "jaguarjs-jsdoc": "^1.1.0",
     "jest": "^26.4.2",
-    "jsdoc": "^3.6.5",
+    "jsdoc": "^3.6.7",
     "mockuments": "0.0.3",
     "mongodb-memory-server": "^6.6.7",
     "redis-mock": "^0.51.0",
